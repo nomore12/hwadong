@@ -1,11 +1,11 @@
 import React from 'react';
-import Test from 'src/components/Test';
+import Router from 'src/router';
+import './index.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
-      <Test />
+      <Router />
     </div>
   );
 }
