@@ -4,4 +4,17 @@
 
 body {
     background-color: #E3DED9;
+    cursor: url(src/components/assets/images/cursor.png) 16 16, auto;
+}
+
+.menu-wrapper {
+    border: none;
+
+}
+
+.landing-logo {
+    position: absolute;
+    top: calc(100vh / 2 - 160px);
+    left: calc(100vw / 2 - 310px);
+    cursor: url(src/components/assets/images/cursor.png) 16 16, auto;
 }

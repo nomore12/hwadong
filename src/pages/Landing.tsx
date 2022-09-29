@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from 'src/components/assets/images/bottom-logo.png';
 
 const Landing = () => {
   return (
     <Link to="/main">
-      <p>재단법인</p>
-      <h1>중앙화동재단</h1>
+      <div className="relative">
+        <img className="landing-logo absolute" src={logo} width="620px" />
+      </div>
     </Link>
   );
 };

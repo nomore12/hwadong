@@ -1,0 +1,29 @@
+import React from 'react';
+
+const TestRow = () => {
+  return (
+    <div className="flex justify-between pt-1">
+      <div className="">0</div>
+      <div className="basis-8/12 flex justify-end">
+        홈페이지 오픈 준비중입니다.
+      </div>
+      <div>2021.07.28</div>
+    </div>
+  );
+};
+
+const nums = [1, 2, 3, 4, 5, 6, 7];
+
+const NoticeBoard = () => {
+  return (
+    <div className="flex flex-col gap-1 divide-y divide-solid divide-zinc-500 w-full">
+      <div></div>
+      {nums.map((item, index) => (
+        <TestRow key={index} />
+      ))}
+      <div></div>
+    </div>
+  );
+};
+
+export default NoticeBoard;
