@@ -16,7 +16,7 @@ const nums = [1, 2, 3, 4, 5, 6, 7];
 
 const NoticeBoard = () => {
   return (
-    <div className="flex flex-col gap-1 divide-y divide-solid divide-zinc-500 w-full">
+    <div className="flex flex-col gap-1 divide-y divide-solid divide-zinc-400 w-full text-zinc-700 font-extralight text-sm">
       <div></div>
       {nums.map((item, index) => (
         <TestRow key={index} />
