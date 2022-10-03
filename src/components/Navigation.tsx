@@ -39,7 +39,7 @@ const Navigation = () => {
   };
 
   return (
-    <div className="w-56 text-xl font-extralight tracking-extraWidest  z-10 relative">
+    <div className="w-56 text-xl font-extralight tracking-extraWidest z-10 relative">
       <div className="">
         <div className="text-zinc-500 divide-y divide-solid divide-zinc-500 flex flex-col">
           <div></div>
