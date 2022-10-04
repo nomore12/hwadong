@@ -1,4 +1,6 @@
 import React from 'react';
+import logo1 from 'src/components/assets/images/logo-1.png';
+import logo2 from 'src/components/assets/images/logo-2.png';
 
 const Footer = () => {
   return (
@@ -9,9 +11,13 @@ const Footer = () => {
         <div className="text-xs text-zinc-700 font-thin">
           이용약관 | 개인정보취급방침
         </div>
-        <div className="flex flex-row">
-          <div>국세청 로고</div>
-          <div className="ml-20">국민권인위원회 로고</div>
+        <div className="flex flex-row pb-5">
+          <div>
+            <img src={logo1} width="160px" />
+          </div>
+          <div className="ml-20">
+            <img src={logo2} width="320px" />
+          </div>
         </div>
       </div>
       <div className="flex flex-col justify-between h-full py-6 items-end text-xxs text-zinc-700">
