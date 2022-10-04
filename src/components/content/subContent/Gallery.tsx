@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import image from 'src/components/assets/images/event.jpeg';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 const Gallery = () => {
   return (
@@ -12,7 +14,17 @@ const Gallery = () => {
       </Link>
       <div className="text-lg tracking-widest text-zinc-900">갤러리</div>
       <div className="mt-40">
-        <img src={image} width="480px" />
+        <Carousel width="480px" showStatus={false} showThumbs={false}>
+          <div>
+            <img src={`${process.env.PUBLIC_URL}/01.jpeg`} />
+          </div>
+          <div>
+            <img src={`${process.env.PUBLIC_URL}/02.jpeg`} />
+          </div>
+          <div>
+            <img src={`${process.env.PUBLIC_URL}/03.jpeg`} />
+          </div>
+        </Carousel>
       </div>
     </div>
   );

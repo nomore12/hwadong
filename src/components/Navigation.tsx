@@ -41,7 +41,7 @@ const Navigation = () => {
   return (
     <div className="w-56 text-xl font-extralight tracking-extraWidest z-10 relative">
       <div className="">
-        <div className="text-zinc-500 divide-y divide-solid divide-zinc-500 flex flex-col">
+        <div className="text-zinc-800 divide-y divide-solid divide-zinc-500 flex flex-col">
           <div></div>
           {menu1 && (
             <Menu items={['설립목적', '연혁', '사업내용', '위치및연락처']} />
