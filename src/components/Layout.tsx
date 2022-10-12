@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ContentWrapper from 'src/components/ContentWrapper';
 import Navigation from 'src/components/Navigation';
 import Establishment from 'src/components/content/Establishment';
@@ -15,18 +15,15 @@ import Archive from 'src/components/content/Archive';
 import OnJium from 'src/components/content/subContent/OnJium';
 import Gallery from './content/subContent/Gallery';
 import Footer from './Footer';
-
-const TestElement = () => {
-  return (
-    <div className="bg-blue-400">
-      <div>test</div>
-      <div>test</div>
-      <div>test</div>
-    </div>
-  );
-};
+import { useAppSelector } from 'src/store/Hooks';
 
 const Layout = () => {
+  const subject = useAppSelector((state) => state.subject);
+
+  useEffect(() => {
+    console.log(typeof subject.subject);
+  });
+
   return (
     <div className="px-20 pt-10 relative flex flex-col items-end columns-3">
       <div className="fixed left-16 bottom-20 z-0">
@@ -35,6 +32,7 @@ const Layout = () => {
       <div className="fixed left-14 top-14 pl-1">
         <img src={logo} width="232px" />
       </div>
+      <div className="fixed left-480 top-14">{subject.subject}</div>
       <Establishment></Establishment>
       <History></History>
       <BusinessContent></BusinessContent>

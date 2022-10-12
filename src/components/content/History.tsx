@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import useSubjectReplacer from 'src/hooks/SubjectReplacer';
 
 const History = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  useSubjectReplacer({ ref: ref, subject: '연혁' });
+
   return (
-    <div className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
-      <div className="text-lg tracking-widest text-zinc-900">연혁</div>
+    <div
+      ref={ref}
+      className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
+      <div className="text-lg tracking-widest text-zinc-900"></div>
       <div className="flex flex-col items-end gap-8 text-sm text-zinc-700 gap-6 w-4/6 mt-2">
         <div className="flex flex-row justify-between w-full">
           <p>2007년</p>

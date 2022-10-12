@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import useSubjectReplacer from 'src/hooks/SubjectReplacer';
 
 const Archive = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  useSubjectReplacer({ ref: ref, subject: '아카이브' });
+
   return (
-    <div className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
-      <div className="text-lg tracking-widest text-zinc-900">
-        재단활동아카이브
-      </div>
+    <div
+      ref={ref}
+      className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
+      <div className="text-lg tracking-widest text-zinc-900"></div>
       <div className="flex flex-col items-end gap-3 text-sm text-zinc-700">
         <div className="flex flex-row justify-between items-center w-full pl-20">
           <Link

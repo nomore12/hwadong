@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import useSubjectReplacer from 'src/hooks/SubjectReplacer';
 
 const Establishment = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  useSubjectReplacer({ ref: ref, subject: '설립목적' });
+
   return (
-    <div className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
-      <div className="text-lg tracking-widest text-zinc-900">설립목적</div>
+    <div
+      ref={ref}
+      className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
+      <div className="text-lg tracking-widest text-zinc-900"></div>
       <div className="flex flex-col items-end gap-8 text-sm text-zinc-700">
         <p>재단법인 중앙화동재단은</p>
         <p>문화, 종교, 언론 발전을 위한</p>
