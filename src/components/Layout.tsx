@@ -32,7 +32,9 @@ const Layout = () => {
       <div className="fixed left-14 top-14 pl-1">
         <img src={logo} width="232px" />
       </div>
-      <div className="fixed left-480 top-14">{subject.subject}</div>
+      <div className="fixed right-720 top-48 text-lg tracking-widest text-zinc-900">
+        {subject.subject}
+      </div>
       <Establishment></Establishment>
       <History></History>
       <BusinessContent></BusinessContent>
