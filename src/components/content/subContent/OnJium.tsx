@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 const OnJium = () => {
   return (
     <div className="w-720 h-128 flex flex-row justify-between mt-48 mb-8 relative">
-      <Link
-        to="/main"
-        className="absolute rounded-full bg-red-500 w-9 h-9 text-white text-xs flex justify-center items-center font-thin top-40">
-        back
-      </Link>
-      <div className="text-lg tracking-widest text-zinc-900">온지음</div>
+      {/*<Link*/}
+      {/*  to="/main"*/}
+      {/*  className="absolute rounded-full bg-red-500 w-9 h-9 text-white text-xs flex justify-center items-center font-thin top-40">*/}
+      {/*  back*/}
+      {/*</Link>*/}
+      <div className="text-lg tracking-widest text-zinc-900"></div>
       <div className="w-480 flex flex-col items-end gap-8 text-sm text-zinc-700">
         <p>
           {'"온 | 모두 온전하게", "지음 | 만들다, 이어가다, 뜻이 통하다"라는'}

@@ -3,7 +3,7 @@ import { Routes, Route, useParams, Link } from 'react-router-dom';
 
 const TestRow = () => {
   return (
-    <Link to="/main/1">
+    <Link to="/main/notice/1">
       <div className="flex justify-between pt-1">
         <div className="">0</div>
         <div className="basis-8/12 flex justify-end">

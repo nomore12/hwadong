@@ -50,7 +50,7 @@ const Layout = () => {
       <Notice>
         <Routes>
           <Route path="/*" element={<NoticeBoard />} />
-          <Route path="/:id" element={<NoticeContent />} />
+          <Route path="/notice/:id" element={<NoticeContent />} />
         </Routes>
       </Notice>
       <Footer />
