@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-scroll';
 
 interface MenuPropsType {
   items: string[];
@@ -9,9 +10,15 @@ const Menu = ({ items }: MenuPropsType) => {
     <div className="menu-parent text-sm flex flex-col gap-2 py-3 transition border border-t-1 border-x-0 border-b-0 border-zinc-500">
       {items &&
         items.map((item, index) => (
-          <div key={index} className="menu-item">
+          <Link
+            key={index}
+            className="menu-item"
+            activeClass="active"
+            smooth
+            spy
+            to={item}>
             {item}
-          </div>
+          </Link>
         ))}
     </div>
   );

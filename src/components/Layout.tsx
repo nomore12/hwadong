@@ -35,24 +35,38 @@ const Layout = () => {
       <div className="fixed right-720 top-48 text-lg tracking-widest text-zinc-900">
         {subject.subject}
       </div>
-      <Establishment></Establishment>
-      <History></History>
-      <BusinessContent></BusinessContent>
-      <Contact></Contact>
-      <Routes>
-        <Route path="/*" element={<FoundationActivity />} />
-        <Route path="/onjium" element={<OnJium />} />
-      </Routes>
-      <Routes>
-        <Route path="/*" element={<Archive />} />
-        <Route path="/gallery" element={<Gallery />} />
-      </Routes>
-      <Notice>
+      <section id="설립목적">
+        <Establishment></Establishment>
+      </section>
+      <section id="연혁">
+        <History></History>
+      </section>
+      <section id="사업내용">
+        <BusinessContent></BusinessContent>
+      </section>
+      <section id="위치및연락처">
+        <Contact></Contact>
+      </section>
+      <section id="재단활동소개">
         <Routes>
-          <Route path="/*" element={<NoticeBoard />} />
-          <Route path="/notice/:id" element={<NoticeContent />} />
+          <Route path="/*" element={<FoundationActivity />} />
+          <Route path="/onjium" element={<OnJium />} />
         </Routes>
-      </Notice>
+      </section>
+      <section id="재단활동아카이브">
+        <Routes>
+          <Route path="/*" element={<Archive />} />
+          <Route path="/gallery" element={<Gallery />} />
+        </Routes>
+      </section>
+      <section id="공지사항">
+        <Notice>
+          <Routes>
+            <Route path="/*" element={<NoticeBoard />} />
+            <Route path="/notice/:id" element={<NoticeContent />} />
+          </Routes>
+        </Notice>
+      </section>
       <Footer />
     </div>
   );
