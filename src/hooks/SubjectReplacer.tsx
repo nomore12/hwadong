@@ -8,7 +8,6 @@ interface PropsType {
 }
 
 const useSubjectReplacer = ({ ref, subject }: PropsType) => {
-  // const [current, setCurrent] = useState<string>('');
   const currentSubject = useAppSelector((state) => state.subject);
   const dispatch = useAppDispatch();
 
@@ -18,8 +17,6 @@ const useSubjectReplacer = ({ ref, subject }: PropsType) => {
         ? ref.current.getBoundingClientRect().y
         : -1;
       if (currentPosition < window.innerHeight / 2 && currentPosition >= 0) {
-        console.log(subject);
-        // setCurrent('사업내용');
         dispatch(changeSubject(subject));
       }
     });

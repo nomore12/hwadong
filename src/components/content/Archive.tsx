@@ -12,14 +12,12 @@ const Archive = () => {
       className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
       <div className="text-lg tracking-widest text-zinc-900"></div>
       <div className="flex flex-col items-end gap-3 text-sm text-zinc-700">
-        <div className="flex flex-row justify-between items-center w-full pl-20">
-          <Link
-            to="/main/gallery"
-            className="rounded-full bg-red-500 w-9 h-9 text-white text-xs flex justify-center items-center font-thin">
-            more
-          </Link>
-          <p>갤러리</p>
-        </div>
+        {/*<Link*/}
+        {/*  to="/main/gallery"*/}
+        {/*  className="rounded-full bg-red-500 w-9 h-9 text-white text-xs flex justify-center items-center font-thin">*/}
+        {/*  more*/}
+        {/*</Link>*/}
+        <p>갤러리</p>
         <p className="font-thin text-xs">
           재단법인 화동문화재단의 지나온 활동과 관련 아카이브
         </p>

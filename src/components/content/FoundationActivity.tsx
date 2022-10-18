@@ -12,14 +12,12 @@ const FoundationActivity = () => {
       className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
       <div className="text-lg tracking-widest text-zinc-900"></div>
       <div className="flex flex-col items-end gap-3 text-sm text-zinc-700">
-        <div className="flex flex-row justify-between items-center w-full pl-20">
-          <Link
-            to="/main/onjium"
-            className="rounded-full bg-red-500 w-9 h-9 text-white text-xs flex justify-center items-center font-thin">
-            more
-          </Link>
-          <p>전통문화연구소 | 온지음</p>
-        </div>
+        {/*<Link*/}
+        {/*  to="/main/onjium"*/}
+        {/*  className="rounded-full bg-red-500 w-9 h-9 text-white text-xs flex justify-center items-center font-thin">*/}
+        {/*  more*/}
+        {/*</Link>*/}
+        <p>전통문화연구소 | 온지음</p>
         <p className="font-thin text-xs">
           온지음은 우리 전통 문화에 담긴 가치와 정신을 계승하고
         </p>

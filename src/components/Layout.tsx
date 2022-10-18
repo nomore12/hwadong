@@ -21,7 +21,7 @@ const Layout = () => {
   const subject = useAppSelector((state) => state.subject);
 
   useEffect(() => {
-    console.log(typeof subject.subject);
+    // console.log(typeof subject.subject);
   });
 
   return (
