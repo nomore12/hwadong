@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import subjectReducer from './Slice';
+import { subjectReducer, cursorReducer } from './Slice';
 
 export const store = configureStore({
-  reducer: { subject: subjectReducer },
+  reducer: { subject: subjectReducer, cursor: cursorReducer },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

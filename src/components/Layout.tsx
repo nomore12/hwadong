@@ -7,7 +7,7 @@ import logo from './assets/images/logo-2-1.png';
 import Notice from 'src/components/content/Notice';
 import NoticeBoard from 'src/components/content/NoticeBoard';
 import NoticeContent from 'src/components/content/subContent/NoticeContent';
-import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useOutlet } from 'react-router-dom';
 import BusinessContent from './content/BusinessContent';
 import Contact from 'src/components/content/Contact';
 import FoundationActivity from 'src/components/content/FoundationActivity';
@@ -15,14 +15,31 @@ import Archive from 'src/components/content/Archive';
 import OnJium from 'src/components/content/subContent/OnJium';
 import Gallery from './content/subContent/Gallery';
 import Footer from './Footer';
-import { useAppSelector } from 'src/store/Hooks';
+import { useAppSelector, useAppDispatch } from 'src/store/Hooks';
+import { changeCurr, changeText } from '../store/Slice';
 
 const Layout = () => {
   const subject = useAppSelector((state) => state.subject);
+  const cursor = useAppSelector((state) => state.cursor);
+  const dispatch = useAppDispatch();
+  const location = useLocation();
 
   useEffect(() => {
-    // console.log(typeof subject.subject);
-  });
+    console.log(location);
+    // dispatch(changeText(''));
+    // dispatch(changeCurr('main'));
+    const path = location.pathname.split('/');
+    console.log(path);
+    if (path.length === 2) {
+      dispatch(changeCurr(''));
+    } else {
+      dispatch(changeCurr('back'));
+    }
+  }, [location]);
+
+  // useEffect(() => {
+  //   dispatch(changeCurr(cursor.curr));
+  // }, [cursor.curr]);
 
   return (
     <div className="px-20 pt-10 relative flex flex-col items-end columns-3">
@@ -30,9 +47,11 @@ const Layout = () => {
         <Navigation />
       </div>
       <div className="fixed left-14 top-14 pl-1">
-        <img src={logo} width="232px" />
+        <img src={logo} alt="logo" width="232px" />
       </div>
-      <div className="fixed right-720 top-48 text-lg tracking-widest text-zinc-900">
+      <div
+        className="fixed right-720 top-48 text-lg tracking-widest text-zinc-900"
+        onClick={(e) => console.log(e)}>
         {subject.subject}
       </div>
       <section id="설립목적">

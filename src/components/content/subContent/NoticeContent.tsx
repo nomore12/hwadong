@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigation, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../store/Hooks';
+import { changeCurr, changeSubject, changeText } from '../../../store/Slice';
+import { useNavigate } from 'react-router-dom';
+
 // interface PropsType {
 //   id: number;
 //   // content: string;
@@ -7,13 +11,29 @@ import { useParams } from 'react-router-dom';
 
 const NoticeContent = () => {
   const params = useParams();
+  const cursor = useAppSelector((state) => state.cursor);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const onClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.preventDefault();
+    navigate('/main');
+  };
 
   useEffect(() => {
-    console.log(params);
+    dispatch(changeCurr('back'));
+
+    return () => {
+      console.log('history back');
+      dispatch(changeSubject('main'));
+    };
   }, []);
 
   return (
-    <div className="flex flex-col h-full gap-1 divide-y divide-solid divide-zinc-400 w-full text-zinc-700 font-extralight text-sm">
+    <div
+      className="flex flex-col h-full gap-1 divide-y divide-solid divide-zinc-400 w-full text-zinc-700 font-extralight text-sm"
+      // onClick={onClick}
+    >
       <div></div>
       <div className="flex justify-between pt-1">
         <div className="">0</div>
