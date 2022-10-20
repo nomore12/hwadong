@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { MouseEventHandler, useEffect } from 'react';
 import ContentWrapper from 'src/components/ContentWrapper';
 import Navigation from 'src/components/Navigation';
 import Establishment from 'src/components/content/Establishment';
@@ -22,8 +22,19 @@ const Layout = () => {
   const cursor = useAppSelector((state) => state.cursor);
   const navigate = useNavigate();
 
-  const onHistoryBack = () => {
-    if (cursor.curr !== 'main') {
+  const backToMainPage = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (cursor.curr === 'main') return;
+
+    /*
+     * 이코드 어떻게 좀 해야함
+     * **/
+    e.stopPropagation();
+    if (
+      (e.target as any).classList.contains('carousel-item') ||
+      (e.target as any).classList.contains('control-arrow')
+    ) {
+      return;
+    } else {
       navigate('/main');
     }
   };
@@ -31,16 +42,14 @@ const Layout = () => {
   return (
     <div
       className="px-20 pt-10 relative flex flex-col items-end columns-3"
-      onClick={onHistoryBack}>
+      onClick={backToMainPage}>
       <div className="fixed left-16 bottom-20 z-0">
         <Navigation />
       </div>
       <div className="fixed left-14 top-14 pl-1">
         <img src={logo} alt="logo" width="232px" />
       </div>
-      <div
-        className="fixed right-720 top-48 text-lg tracking-widest text-zinc-900"
-        onClick={(e) => console.log(e)}>
+      <div className="fixed right-720 top-48 text-lg tracking-widest text-zinc-900">
         {subject.subject}
       </div>
       <section id="설립목적">

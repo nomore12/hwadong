@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { useAppDispatch, useAppSelector } from '../../../store/Hooks';
-import { changeCurr, changeText } from '../../../store/Slice';
+import { changeCurr, changeSubject, changeText } from '../../../store/Slice';
+import { animateScroll } from 'react-scroll';
 
 const imgArr = [
   {
@@ -22,10 +23,14 @@ const imgArr = [
 const Gallery = () => {
   const state = useAppSelector((state) => state.cursor);
   const dispatch = useAppDispatch();
+  const [desc, setDesc] = useState(imgArr[0].desc);
 
   useEffect(() => {
     dispatch(changeCurr('archive'));
     dispatch(changeText('back'));
+    dispatch(changeSubject('갤러리'));
+
+    animateScroll.scrollTo(3720);
 
     return () => {
       dispatch(changeCurr('main'));
@@ -33,27 +38,33 @@ const Gallery = () => {
     };
   }, []);
 
+  const onChange = (index: number, item: React.ReactNode) => {
+    setDesc(imgArr[index].desc);
+  };
+
   return (
-    <div className="w-720 h-128 flex flex-row justify-between mt-48 mb-8 relative">
+    <div className="w-720 h-128 flex flex-row justify-between items-start mt-48 mb-8 relative">
       <div className="text-lg tracking-widest text-zinc-900"></div>
-      <div className="mt-40">
+      <div className="">
         <Carousel
-          width="480px"
+          className="pt-12"
+          width="560px"
           showStatus={false}
           showThumbs={false}
           autoPlay
           infiniteLoop
-          interval={5000}>
+          interval={5000}
+          onChange={onChange}>
           {imgArr &&
             imgArr.map((item, key) => {
               return (
-                <div key={key}>
+                <div key={key} className={`carousel-item ${item.desc}`}>
                   <img src={item.img} />
-                  <p>{item.desc}</p>
                 </div>
               );
             })}
         </Carousel>
+        <p className="mt-8 text-sm text-stone-800">{desc}</p>
       </div>
     </div>
   );

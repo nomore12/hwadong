@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useAppSelector, useAppDispatch } from '../store/Hooks';
+import { useAppSelector } from '../store/Hooks';
 
 interface CursorTextPropsType {
   text: string;
@@ -17,7 +16,6 @@ const CursorText = ({ text }: CursorTextPropsType) => {
 const Cursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const cursor = useAppSelector((state) => state.cursor);
-  const dispatch = useAppDispatch();
 
   const variants = {
     default: {
@@ -42,7 +40,7 @@ const Cursor = () => {
   return (
     <>
       <div
-        className="cursor"
+        className="cursor bg-red-600 bg-opacity-50"
         style={{
           width: '40px',
           height: '40px',
@@ -50,7 +48,6 @@ const Cursor = () => {
           top: `calc(${mousePosition.y}px - 20px)`,
           position: 'fixed',
           fontSize: '12px',
-          backgroundColor: 'red',
           color: 'white',
           fontWeight: 600,
           borderRadius: '50%',

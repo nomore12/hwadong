@@ -18,7 +18,7 @@ const useMouseEventHook = () => {
   };
 
   const navigateToPage = (url: string) => {
-    navigate(`/main/${url}`);
+    navigate(url);
   };
 
   return {

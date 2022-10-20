@@ -22,7 +22,7 @@ const Archive = () => {
               onMouseMove={onMouseEnter}
               onMouseLeave={onMouseLeave}
               onMouseUp={function () {
-                navigateToPage('gallery');
+                navigateToPage('/main/gallery');
               }}
             />
           </p>
@@ -37,7 +37,7 @@ const Archive = () => {
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             onMouseUp={function () {
-              navigateToPage('gallery');
+              navigateToPage('/main/gallery');
             }}
           />
         </p>
@@ -60,7 +60,7 @@ const Archive = () => {
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             onMouseUp={function () {
-              navigateToPage('gallery');
+              navigateToPage('/main/gallery');
             }}
           />
         </p>
