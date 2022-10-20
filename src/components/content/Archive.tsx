@@ -1,28 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import useSubjectReplacer from 'src/hooks/SubjectReplacer';
-import { useAppDispatch } from '../../store/Hooks';
-import { changeCurr, changeText } from '../../store/Slice';
+import useMouseEventHook from 'src/hooks/UseMouseEventHook';
 
 const Archive = () => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
   useSubjectReplacer({ ref: ref, subject: '아카이브' });
-
-  const onMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-    dispatch(changeCurr('more'));
-    dispatch(changeText('more'));
-  };
-
-  const onMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    dispatch(changeCurr('main'));
-    dispatch(changeText(''));
-  };
-
-  const navigateToArchivePage = (url: string) => {
-    navigate(`/main/${url}`);
-  };
 
   return (
     <div
@@ -38,7 +22,7 @@ const Archive = () => {
               onMouseMove={onMouseEnter}
               onMouseLeave={onMouseLeave}
               onMouseUp={function () {
-                navigateToArchivePage('gallery');
+                navigateToPage('gallery');
               }}
             />
           </p>
@@ -53,7 +37,7 @@ const Archive = () => {
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             onMouseUp={function () {
-              navigateToArchivePage('gallery');
+              navigateToPage('gallery');
             }}
           />
         </p>
@@ -76,7 +60,7 @@ const Archive = () => {
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
             onMouseUp={function () {
-              navigateToArchivePage('gallery');
+              navigateToPage('gallery');
             }}
           />
         </p>
