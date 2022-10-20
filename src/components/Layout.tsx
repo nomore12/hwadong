@@ -16,6 +16,7 @@ import OnJium from 'src/components/content/subContent/OnJium';
 import Gallery from './content/subContent/Gallery';
 import Footer from './Footer';
 import { useAppSelector } from 'src/store/Hooks';
+import { motion } from 'framer-motion';
 
 const Layout = () => {
   const subject = useAppSelector((state) => state.subject);
@@ -40,7 +41,10 @@ const Layout = () => {
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.5 }}
       className="px-20 pt-10 relative flex flex-col items-end columns-3"
       onClick={backToMainPage}>
       <div className="fixed left-16 bottom-20 z-0">
@@ -85,7 +89,7 @@ const Layout = () => {
         </Notice>
       </section>
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 
