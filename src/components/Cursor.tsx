@@ -29,8 +29,6 @@ const Cursor = () => {
   useEffect(() => {
     const mouseMove = (e: MouseEvent) => {
       e.preventDefault();
-      // console.log(e);
-      // e.stopImmediatePropagation();
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
@@ -62,7 +60,7 @@ const Cursor = () => {
           zIndex: 1,
           pointerEvents: 'none',
         }}>
-        <CursorText text={cursor.curr === 'main' ? '' : cursor.curr} />
+        <CursorText text={cursor.curr === 'main' ? '' : cursor.text} />
       </div>
     </>
   );

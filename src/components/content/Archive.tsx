@@ -1,22 +1,27 @@
-import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import useSubjectReplacer from 'src/hooks/SubjectReplacer';
 import { useAppDispatch } from '../../store/Hooks';
-import { changeCurr } from '../../store/Slice';
+import { changeCurr, changeText } from '../../store/Slice';
 
 const Archive = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   useSubjectReplacer({ ref: ref, subject: '아카이브' });
 
   const onMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
     dispatch(changeCurr('more'));
+    dispatch(changeText('more'));
   };
 
   const onMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    dispatch(changeCurr(''));
+    dispatch(changeCurr('main'));
+    dispatch(changeText(''));
+  };
+
+  const navigateToArchivePage = (url: string) => {
+    navigate(`/main/${url}`);
   };
 
   return (
@@ -25,20 +30,19 @@ const Archive = () => {
       className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
       <div className="text-lg tracking-widest text-zinc-900"></div>
       <div className="flex flex-col items-end gap-3 text-sm text-zinc-700">
-        <p className="relative">
-          갤러리
-          <Link to="/main/gallery">
+        <Link to="/main/gallery">
+          <p className="relative">
+            갤러리
             <div
               className="w-16 h-7 -top-1 -left-3 absolute"
-              onMouseEnter={onMouseEnter}
-              onMouseLeave={(e) => {
-                e.preventDefault();
-                console.log('leave');
-                dispatch(changeCurr('main'));
+              onMouseMove={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+              onMouseUp={function () {
+                navigateToArchivePage('gallery');
               }}
             />
-          </Link>
-        </p>
+          </p>
+        </Link>
         <p className="font-thin text-xs">
           재단법인 화동문화재단의 지나온 활동과 관련 아카이브
         </p>
@@ -48,6 +52,9 @@ const Archive = () => {
             className="w-36 h-7 -top-1 -left-3 absolute"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
+            onMouseUp={function () {
+              navigateToArchivePage('gallery');
+            }}
           />
         </p>
         <p className="font-thin text-xs">
@@ -68,6 +75,9 @@ const Archive = () => {
             className="w-28 h-7 -top-1 -left-3 absolute"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
+            onMouseUp={function () {
+              navigateToArchivePage('gallery');
+            }}
           />
         </p>
         <p className="font-thin text-xs">

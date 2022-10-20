@@ -21,19 +21,18 @@ const NoticeContent = () => {
   };
 
   useEffect(() => {
-    dispatch(changeCurr('back'));
+    dispatch(changeCurr('notice'));
+    dispatch(changeText('back'));
 
     return () => {
       console.log('history back');
-      dispatch(changeSubject('main'));
+      dispatch(changeText(''));
+      dispatch(changeCurr('main'));
     };
   }, []);
 
   return (
-    <div
-      className="flex flex-col h-full gap-1 divide-y divide-solid divide-zinc-400 w-full text-zinc-700 font-extralight text-sm"
-      // onClick={onClick}
-    >
+    <div className="flex flex-col h-full gap-1 divide-y divide-solid divide-zinc-400 w-full text-zinc-700 font-extralight text-sm">
       <div></div>
       <div className="flex justify-between pt-1">
         <div className="">0</div>

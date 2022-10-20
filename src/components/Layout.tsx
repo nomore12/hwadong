@@ -7,7 +7,7 @@ import logo from './assets/images/logo-2-1.png';
 import Notice from 'src/components/content/Notice';
 import NoticeBoard from 'src/components/content/NoticeBoard';
 import NoticeContent from 'src/components/content/subContent/NoticeContent';
-import { Route, Routes, useLocation, useOutlet } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import BusinessContent from './content/BusinessContent';
 import Contact from 'src/components/content/Contact';
 import FoundationActivity from 'src/components/content/FoundationActivity';
@@ -15,34 +15,23 @@ import Archive from 'src/components/content/Archive';
 import OnJium from 'src/components/content/subContent/OnJium';
 import Gallery from './content/subContent/Gallery';
 import Footer from './Footer';
-import { useAppSelector, useAppDispatch } from 'src/store/Hooks';
-import { changeCurr, changeText } from '../store/Slice';
+import { useAppSelector } from 'src/store/Hooks';
 
 const Layout = () => {
   const subject = useAppSelector((state) => state.subject);
   const cursor = useAppSelector((state) => state.cursor);
-  const dispatch = useAppDispatch();
-  const location = useLocation();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(location);
-    // dispatch(changeText(''));
-    // dispatch(changeCurr('main'));
-    const path = location.pathname.split('/');
-    console.log(path);
-    if (path.length === 2) {
-      dispatch(changeCurr(''));
-    } else {
-      dispatch(changeCurr('back'));
+  const onHistoryBack = () => {
+    if (cursor.curr !== 'main') {
+      navigate('/main');
     }
-  }, [location]);
-
-  // useEffect(() => {
-  //   dispatch(changeCurr(cursor.curr));
-  // }, [cursor.curr]);
+  };
 
   return (
-    <div className="px-20 pt-10 relative flex flex-col items-end columns-3">
+    <div
+      className="px-20 pt-10 relative flex flex-col items-end columns-3"
+      onClick={onHistoryBack}>
       <div className="fixed left-16 bottom-20 z-0">
         <Navigation />
       </div>
