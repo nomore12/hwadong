@@ -7,9 +7,13 @@ interface SubjectState {
   subject: string;
 }
 
+// export type = {
+//   cursorText:
+// }
+
 interface CursorState {
   text: string;
-  curr: 'gallery' | 'notice' | 'main' | 'archive' | 'more' | '' | 'back';
+  curr: string;
 }
 
 const subjectInitialState: SubjectState = {
@@ -38,12 +42,7 @@ export const cursorSlice = createSlice({
     changeText: (state, action: PayloadAction<string>) => {
       state.text = action.payload;
     },
-    changeCurr: (
-      state,
-      action: PayloadAction<
-        'gallery' | 'notice' | 'main' | 'archive' | 'more' | '' | 'back'
-      >
-    ) => {
+    changeCurr: (state, action: PayloadAction<string>) => {
       state.curr = action.payload;
     },
   },

@@ -17,6 +17,7 @@ import Gallery from './content/subContent/Gallery';
 import Footer from './Footer';
 import { useAppSelector } from 'src/store/Hooks';
 import { motion } from 'framer-motion';
+import Hongjingi from './content/subContent/Hongjingi';
 
 const Layout = () => {
   const subject = useAppSelector((state) => state.subject);
@@ -32,7 +33,10 @@ const Layout = () => {
     e.stopPropagation();
     if (
       (e.target as any).classList.contains('carousel-item') ||
-      (e.target as any).classList.contains('control-arrow')
+      (e.target as any).classList.contains('control-arrow') ||
+      (e.target as any).classList.contains('dot') ||
+      (e.target as any).classList.contains('control-dots') ||
+      (e.target as any).classList.contains('out-link')
     ) {
       return;
     } else {
@@ -72,6 +76,7 @@ const Layout = () => {
         <Routes>
           <Route path="/*" element={<FoundationActivity />} />
           <Route path="/onjium" element={<OnJium />} />
+          <Route path="/hong" element={<Hongjingi />} />
         </Routes>
       </section>
       <section id="재단활동아카이브">

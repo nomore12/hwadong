@@ -21,9 +21,15 @@ const Contact = () => {
           <Instagram width="36px" height="36px" />
         </span>
         <div className="flex flex-col items-end text-sm font-thin gap-1 pt-2">
-          <p>tel| 02. 751. 9898</p>
-          <p>fax| 02. 751. 9894</p>
-          <p>email| hwadongcf@naver.com</p>
+          <p>
+            <span className="font-extralight">tel</span> | 02. 751. 9898
+          </p>
+          <p>
+            <span className="font-extralight">fax</span> | 02. 751. 9894
+          </p>
+          <p>
+            <span className="font-extralight">email</span> | hwadongcf@naver.com
+          </p>
         </div>
       </div>
     </div>

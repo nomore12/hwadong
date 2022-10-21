@@ -35,6 +35,7 @@ const Gallery = () => {
     return () => {
       dispatch(changeCurr('main'));
       dispatch(changeText(''));
+      dispatch(changeSubject('아카이브'));
     };
   }, []);
 
