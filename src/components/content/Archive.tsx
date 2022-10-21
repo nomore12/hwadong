@@ -42,17 +42,15 @@ const Archive = () => {
           />
         </p>
         <p className="font-thin text-xs">
-          세계문화오픈(WORLD CULTURE OPEN)은 문화의 세걔화, 미래화에 대비하고
+          ‘더불어 행복한 세상’을 실현하기 위해 문화의 세계화,
         </p>
         <p className="font-thin text-xs">
-          다문화 열린 사회로 가는 국제적 문화터전을 마련하며,
+          미래화에 대비하고 다문화 열린 사회의 문화적 터전 마련에 기여하기 위한
         </p>
         <p className="font-thin text-xs">
-          {"'더불어 행복한 세상'이라는 비전을 실현하기 위해"}
+          학문적 연구 및 문화 행사를 실천합니다.
         </p>
-        <p className="font-thin text-xs">
-          민관이 협업하는 창의적 글로벌 네트워크를 구성하기 위한 활동 아카이브
-        </p>
+        <p className="font-thin text-xs"></p>
         <p className="mt-12 relative">
           기타 목적 사업
           <div
@@ -65,11 +63,11 @@ const Archive = () => {
           />
         </p>
         <p className="font-thin text-xs">
-          재단법인 화동문화재단이 진행해온 해리티지 투모로우, 정자나무 가꾸기,
-          장학금 및 학술연구,
+          주요 사업 이외에도 헤리티지 투모로우, 정자나무 가꾸기,
         </p>
         <p className="font-thin text-xs">
-          종교단체 지원등의 다양한 목적 사업 아카이브
+          장학금 및 학술연구, 종교지원단체 등의 다양한 목적 사업을 진행하고
+          있습니다.
         </p>
         <p></p>
       </div>

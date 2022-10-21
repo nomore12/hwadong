@@ -10,7 +10,7 @@ interface PropsType {
   type?: 'notice' | 'report';
 }
 
-const NoticeContent = ({ id, type }: PropsType) => {
+const BusinessReportContent = ({ id, type }: PropsType) => {
   const params = useParams();
   const cursor = useAppSelector((state) => state.cursor);
   const dispatch = useAppDispatch();
@@ -24,7 +24,7 @@ const NoticeContent = ({ id, type }: PropsType) => {
   useEffect(() => {
     dispatch(changeCurr('notice'));
     dispatch(changeText('back'));
-    animateScroll.scrollTo(4458);
+    animateScroll.scrollTo(5160);
 
     return () => {
       console.log('history back');
@@ -43,10 +43,12 @@ const NoticeContent = ({ id, type }: PropsType) => {
         </div>
         <div>2021.07.28</div>
       </div>
-      <div className="h-full flex justify-end py-2">공지사항 내용입니다.</div>
+      <div className="h-full flex justify-end py-2">{`${
+        type === 'notice' ? '공지사항' : '연간사업보고'
+      } 내용입니다`}</div>
       <div></div>
     </div>
   );
 };
 
-export default NoticeContent;
+export default BusinessReportContent;

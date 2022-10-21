@@ -18,6 +18,9 @@ import Footer from './Footer';
 import { useAppSelector } from 'src/store/Hooks';
 import { motion } from 'framer-motion';
 import Hongjingi from './content/subContent/Hongjingi';
+import BusinessReport from './content/BusinessReport';
+import BusinessReportContent from './content/subContent/BusinessReportContent';
+import BusinessBoard from './content/BusinessBoard';
 
 const Layout = () => {
   const subject = useAppSelector((state) => state.subject);
@@ -92,6 +95,12 @@ const Layout = () => {
             <Route path="/notice/:id" element={<NoticeContent />} />
           </Routes>
         </Notice>
+        <BusinessReport>
+          <Routes>
+            <Route path="/*" element={<BusinessBoard />} />
+            <Route path="/report/:id" element={<BusinessReportContent />} />
+          </Routes>
+        </BusinessReport>
       </section>
       <Footer />
     </motion.div>
