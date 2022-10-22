@@ -51,7 +51,7 @@ const Navigation = () => {
         <div className="text-zinc-800 divide-y divide-solid divide-zinc-500 flex flex-col">
           <div></div>
           {menu1 && (
-            <Menu items={['설립목적', '연혁', '사업내용', '위치및연락처']} />
+            <Menu items={['설립목적', '연혁', '사업내용', '위치 및 연락처']} />
           )}
           <div onClick={onClick} className="h-16 flex items-center">
             재단소개

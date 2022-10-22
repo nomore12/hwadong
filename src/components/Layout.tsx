@@ -72,7 +72,7 @@ const Layout = () => {
       <section id="사업내용">
         <BusinessContent></BusinessContent>
       </section>
-      <section id="위치및연락처">
+      <section id="위치 및 연락처">
         <Contact></Contact>
       </section>
       <section id="재단활동소개">

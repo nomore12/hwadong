@@ -8,7 +8,7 @@ import useSubjectReplacer from 'src/hooks/SubjectReplacer';
 
 const Contact = () => {
   const ref = useRef<HTMLDivElement | null>(null);
-  useSubjectReplacer({ ref: ref, subject: '위치및연락처' });
+  useSubjectReplacer({ ref: ref, subject: '위치 및 연락처' });
 
   return (
     <div
