@@ -21,6 +21,8 @@ import Hongjingi from './content/subContent/Hongjingi';
 import BusinessReport from './content/BusinessReport';
 import BusinessReportContent from './content/subContent/BusinessReportContent';
 import BusinessBoard from './content/BusinessBoard';
+import { isMobile } from 'react-device-detect';
+import MobileNavigation from './MobileNavigation';
 
 const Layout = () => {
   const subject = useAppSelector((state) => state.subject);
@@ -28,7 +30,7 @@ const Layout = () => {
   const navigate = useNavigate();
 
   const backToMainPage = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (cursor.curr === 'main') return;
+    if (cursor.curr === 'main' || isMobile) return;
 
     /*
      * 이코드 어떻게 좀 해야함
@@ -52,15 +54,19 @@ const Layout = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="px-20 pt-10 relative flex flex-col items-end columns-3"
+      className="px-5 md:px-20 pt-10 relative flex flex-col items-center md:items-end columns-3 w-full"
       onClick={backToMainPage}>
       <div className="fixed left-16 bottom-20 z-0">
         <Navigation />
       </div>
-      <div className="fixed left-14 top-14 pl-1">
+      {isMobile && <MobileNavigation />}
+      <div className="fixed left-14 top-14 pl-1 hidden lg:block">
         <img src={logo} alt="logo" width="232px" />
+        <p className="fixed left-16 top-80 hidden xl:hidden lg:block">
+          {subject.subject}
+        </p>
       </div>
-      <div className="fixed right-840 top-48 text-lg tracking-widest text-zinc-900">
+      <div className="fixed right-840 top-48 text-lg tracking-widest text-zinc-900 hidden xl:block">
         {subject.subject}
       </div>
       <section id="설립목적">
@@ -88,7 +94,9 @@ const Layout = () => {
           <Route path="/gallery" element={<Gallery />} />
         </Routes>
       </section>
-      <section id="공지사항">
+      <section
+        id="공지사항"
+        className="flex flex-col items-start sm:items-end m-auto w-full">
         <Notice>
           <Routes>
             <Route path="/*" element={<NoticeBoard />} />

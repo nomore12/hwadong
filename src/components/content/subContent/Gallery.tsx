@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { useAppDispatch, useAppSelector } from '../../../store/Hooks';
 import { changeCurr, changeSubject, changeText } from '../../../store/Slice';
 import { animateScroll } from 'react-scroll';
+import { isMobile } from 'react-device-detect';
 
 const imgArr = [
   {

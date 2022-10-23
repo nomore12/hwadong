@@ -1,9 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../store/Hooks';
+import styled from 'styled-components';
+import { isMobile } from 'react-device-detect';
 
 interface CursorTextPropsType {
   text: string;
 }
+
+const CursorStyle = styled.div<{ x: number; y: number }>`
+  width: 40px;
+  height: 40px;
+  ${(props) => props.x && `left: calc(${props.x}px - 20px`};
+  ${(props) => props.x && `top: calc(${props.y}px - 20px`};
+  position: fixed;
+  font-size: 12px;
+  color: white;
+  font-weight: 600;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  pointer-events: none;
+  background-color: red;
+  opacity: 0.5;
+`;
 
 const CursorText = ({ text }: CursorTextPropsType) => {
   return (
@@ -29,7 +50,6 @@ const Cursor = () => {
       e.preventDefault();
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-
     window.addEventListener('mousemove', mouseMove);
 
     return () => {
@@ -51,7 +71,7 @@ const Cursor = () => {
           color: 'white',
           fontWeight: 600,
           borderRadius: '50%',
-          display: 'flex',
+          display: `${isMobile ? 'none' : 'flex'}`,
           justifyContent: 'center',
           alignItems: 'center',
           zIndex: 1,

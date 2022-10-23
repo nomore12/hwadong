@@ -27,7 +27,6 @@ const NoticeContent = ({ id, type }: PropsType) => {
     animateScroll.scrollTo(4458);
 
     return () => {
-      console.log('history back');
       dispatch(changeText(''));
       dispatch(changeCurr('main'));
     };

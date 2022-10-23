@@ -9,11 +9,8 @@ const FoundationActivity = () => {
   const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
 
   return (
-    <div
-      ref={ref}
-      className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
-      <div className="text-lg tracking-widest text-zinc-900"></div>
-      <div className="flex flex-col items-end gap-3 text-sm text-zinc-700">
+    <div ref={ref} className="w-720 h-128 flex flex-row justify-end mt-48 mb-8">
+      <div className="flex flex-col items-end gap-3 text-sm text-zinc-700 px-10 sm:px-0">
         <p className="relative">
           [전통문화연구소ㅣ 온지음]
           <div
@@ -29,8 +26,10 @@ const FoundationActivity = () => {
           ‘과거와 현재가 온전히 만나 미래를 짓다’
         </p>
         <p className="font-thin text-xs">
-          우리 전통 문화에 담긴 가치와 정신을 계승하고 이를 현대화하여 올바른
-          내일의 유산을 연구합니다.
+          우리 전통 문화에 담긴 가치와 정신을 계승하고 이를
+        </p>
+        <p className="font-thin text-xs">
+          현대화하여 올바른 내일의 유산을 연구합니다.
         </p>
         <p className="mt-12 relative">
           [홍진기 창조인상]

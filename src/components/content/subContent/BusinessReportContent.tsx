@@ -27,7 +27,6 @@ const BusinessReportContent = ({ id, type }: PropsType) => {
     animateScroll.scrollTo(5160);
 
     return () => {
-      console.log('history back');
       dispatch(changeText(''));
       dispatch(changeCurr('main'));
     };

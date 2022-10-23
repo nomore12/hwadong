@@ -51,8 +51,7 @@ const BusinessContent = () => {
     <div
       id="businessContent"
       ref={content}
-      className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
-      <div className="text-lg tracking-widest text-zinc-900"></div>
+      className="w-720 h-128 flex flex-row justify-end px-10 sm:px-0 mt-48 mb-8">
       <div className="flex flex-col items-end gap-8 text-sm text-zinc-700 ">
         {businessContent &&
           businessContent.map((item, index) => {

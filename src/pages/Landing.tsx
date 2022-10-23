@@ -21,16 +21,11 @@ const Landing = () => {
     setTimeout(() => navigate('/main'), 2000);
     setOpacity(0);
   };
-  useEffect(() => {}, []);
-  const onTabStart = (event: any, info: any) => {
-    console.log(event, info);
-  };
 
   return (
     <AnimatePresence mode="wait" initial={false}>
       <div className="relative flex justify-center items-center h-screen">
         <motion.div
-          // className=""
           initial={{ opacity: 1 }}
           animate={{ opacity: opacity }}
           transition={{ duration: 1.8 }}
@@ -39,7 +34,6 @@ const Landing = () => {
             height: '400px',
           }}
           onClick={timeOut}
-          // onTapStart={(e, info) => console.log(info)}
           className="privacy-screen">
           <img className="landing-logo" src={logo} width="360px" />
         </motion.div>

@@ -6,9 +6,14 @@
     cursor: none;
 }
 
+@media screen and (max-width: 1024px) {
+    * {
+        cursor: auto;
+    }
+}
+
 body {
     background-color: #E3DED9;
-    /*cursor: url('src/components/assets/images/cursor-more.cur'), auto;*/
 }
 
 .menu-wrapper {

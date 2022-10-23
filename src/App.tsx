@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Router from 'src/router';
 import './index.css';
-import Cursor from './components/Cursor';
+import Cursor from 'src/components/Cursor';
 import MouseContextProvider from './components/context/MouseContext';
 
 function App() {

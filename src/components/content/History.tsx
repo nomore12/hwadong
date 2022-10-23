@@ -23,11 +23,8 @@ const History = () => {
   useSubjectReplacer({ ref: ref, subject: '연혁' });
 
   return (
-    <div
-      ref={ref}
-      className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
-      <div className="text-lg tracking-widest text-zinc-900"></div>
-      <div className="flex flex-col items-end gap-4 text-sm text-zinc-700 gap-6 w-4/6 mt-2">
+    <div ref={ref} className="w-720 h-128 flex flex-row justify-end mt-48 mb-8">
+      <div className="flex flex-col items-end gap-4 text-sm text-zinc-700 gap-6 w-4/6 px-10 sm:px-0 mt-2">
         {historyContent &&
           historyContent.map((item, index) => {
             return (

@@ -6,11 +6,8 @@ const Establishment = () => {
   useSubjectReplacer({ ref: ref, subject: '설립목적' });
 
   return (
-    <div
-      ref={ref}
-      className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
-      <div className="text-lg tracking-widest text-zinc-900"></div>
-      <div className="flex flex-col items-end gap-8 text-sm text-zinc-700">
+    <div ref={ref} className="w-720 h-128 flex flex-row justify-end mt-48 mb-8">
+      <div className="flex flex-col items-end gap-8 text-sm text-zinc-700 px-10 sm:px-0">
         <p>재단법인 중앙화동재단은</p>
         <p>「민법」 및 「문화체육관광부 및</p>
         <p>감독에 관한 규칙」에 의해 설립된 비영리법인으로,</p>

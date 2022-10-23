@@ -12,9 +12,8 @@ const BusinessReport = ({ children }: PropsType) => {
   return (
     <div
       ref={ref}
-      className="w-720 h-128 flex flex-row justify-between mt-48 mb-8 relative">
-      <div className="text-lg tracking-widest text-zinc-900"></div>
-      <div className="flex flex-col items-end gap-8 text-sm text-zinc-700 w-4/5">
+      className="sm:w-720 h-128 flex flex-row justify-end mt-48 mb-8 relative">
+      <div className="flex flex-col items-end gap-8 text-sm text-zinc-700 w-4/5 px-10 sm:px-0">
         {children}
       </div>
     </div>

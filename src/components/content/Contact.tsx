@@ -13,12 +13,9 @@ const Contact = () => {
   const { onMouseEnter, onMouseLeave } = useMouseEventHook();
 
   return (
-    <div
-      ref={ref}
-      className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
-      <div className="text-lg tracking-widest text-zinc-900"></div>
-      <div className="flex flex-col items-end gap-2 text-sm text-zinc-700 pt-12">
-        <img src={addressMap} width="600px" />
+    <div ref={ref} className="w-720 h-128 flex flex-row justify-end mt-48 mb-8">
+      <div className="w-3/5 sm:w-600 flex flex-col items-end gap-2 text-sm text-zinc-700 px-10 sm:px-0 pt-12">
+        <img src={addressMap} className="location-img" width="100%" />
         <span className="pt-6">
           <Instagram width="36px" height="36px" />
         </span>

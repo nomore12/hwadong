@@ -46,7 +46,7 @@ const Navigation = () => {
   };
 
   return (
-    <div className="w-56 text-xl font-extralight tracking-extraWidest z-10 relative">
+    <div className="w-56 text-xl font-extralight tracking-extraWidest z-10 relative hidden lg:block">
       <div className="">
         <div className="text-zinc-800 divide-y divide-solid divide-zinc-500 flex flex-col">
           <div></div>

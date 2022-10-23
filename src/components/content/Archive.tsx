@@ -9,11 +9,8 @@ const Archive = () => {
   useSubjectReplacer({ ref: ref, subject: '아카이브' });
 
   return (
-    <div
-      ref={ref}
-      className="w-720 h-128 flex flex-row justify-between mt-48 mb-8">
-      <div className="text-lg tracking-widest text-zinc-900"></div>
-      <div className="flex flex-col items-end gap-3 text-sm text-zinc-700">
+    <div ref={ref} className="w-720 h-128 flex flex-row justify-end mt-48 mb-8">
+      <div className="flex flex-col items-end gap-3 text-sm text-zinc-700 px-10 sm:px-0">
         <Link to="/main/gallery">
           <p className="relative">
             갤러리

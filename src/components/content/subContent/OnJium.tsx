@@ -24,9 +24,8 @@ const OnJium = () => {
   }, []);
 
   return (
-    <div className="w-720 h-128 flex flex-row justify-between mt-48 mb-8 relative">
-      <div className="text-lg tracking-widest text-zinc-900"></div>
-      <div className="w-480 flex flex-col items-end gap-6 text-sm text-zinc-700">
+    <div className="w-720 h-128 flex flex-row justify-end mt-48 mb-8 relative">
+      <div className="w-480 flex flex-col items-end gap-6 text-sm text-zinc-700 px-10 sm:px-0">
         <p>
           {'"온 | 모두 온전하게", "지음 | 만들다, 이어가다, 뜻이 통하다"라는'}
         </p>
@@ -69,9 +68,10 @@ const OnJium = () => {
           </div>
           <div className="flex flex-row justify-between items-center w-full mt-12">
             <p>집공방</p>
-            <p className="text-xs text-zinc-500">
-              한식 구조와 재료 개발 연구, 한옥 및 건축 설계 교육, 한옥과 관련된
-              기획 연구 등
+            <p className="text-xs text-right text-zinc-500">
+              한식 구조와 재료 개발 연구, 한옥 및 건축 설계 교육,
+              <br />
+              한옥과 관련된 기획 연구 등
             </p>
           </div>
         </div>
