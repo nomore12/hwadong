@@ -25,7 +25,7 @@ const BusinessBoard = () => {
   const params = useParams();
 
   return (
-    <div className="flex flex-col w-auto gap-1 divide-y divide-solid divide-zinc-400 w-full text-zinc-700 font-extralight text-sm ">
+    <div className="flex flex-col w-auto lg:w-full gap-1 divide-y divide-solid divide-zinc-400 w-full text-zinc-700 font-extralight text-sm ">
       <div></div>
       {nums.map((item, index) => (
         <TestRow key={index} />
