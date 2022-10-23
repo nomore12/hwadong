@@ -5,10 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import instagram from 'src/components/assets/images/instagram.png';
 import { ReactComponent as Instagram } from 'src/components/assets/images/icons8-instagram-100.svg';
 import useSubjectReplacer from 'src/hooks/SubjectReplacer';
+import useMouseEventHook from '../../hooks/UseMouseEventHook';
 
 const Contact = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   useSubjectReplacer({ ref: ref, subject: '위치 및 연락처' });
+  const { onMouseEnter, onMouseLeave } = useMouseEventHook();
 
   return (
     <div
@@ -27,9 +29,18 @@ const Contact = () => {
           <p>
             <span className="font-extralight">fax</span> | 02. 751. 9894
           </p>
-          <p>
-            <span className="font-extralight">email</span> | hwadongcf@naver.com
-          </p>
+          <a href="mailto:nightwing@naver.com">
+            <span className="mail-to font-extralight">email</span> |
+            <span
+              onMouseEnter={function (e) {
+                onMouseEnter(e, 'email');
+              }}
+              onMouseLeave={function (e) {
+                onMouseLeave(e);
+              }}>
+              hwadongcf@naver.com
+            </span>
+          </a>
         </div>
       </div>
     </div>

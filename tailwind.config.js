@@ -12,6 +12,7 @@ module.exports = {
         128: '32rem',
         480: '480px',
         720: '720px',
+        840: '840px',
       },
       letterSpacing: {
         extraWidest: '.3em',

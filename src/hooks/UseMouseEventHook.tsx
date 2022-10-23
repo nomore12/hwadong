@@ -7,12 +7,18 @@ const useMouseEventHook = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const onMouseEnter = (e: React.MouseEvent<HTMLDivElement>, text?: string) => {
+  const onMouseEnter = (
+    e: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLSpanElement>,
+    text?: string
+  ) => {
     text ? dispatch(changeCurr(text)) : dispatch(changeCurr('more'));
     text ? dispatch(changeText(text)) : dispatch(changeText('more'));
   };
 
-  const onMouseLeave = (e: React.MouseEvent<HTMLDivElement>, text?: string) => {
+  const onMouseLeave = (
+    e: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLSpanElement>,
+    text?: string
+  ) => {
     text ? dispatch(changeCurr(text)) : dispatch(changeCurr('main'));
     text ? dispatch(changeText(text)) : dispatch(changeText(''));
   };

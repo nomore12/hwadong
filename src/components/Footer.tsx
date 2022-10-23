@@ -8,19 +8,17 @@ const Footer = () => {
       className="w-[calc(100vw-9rem-360px)] py-4 flex flex-row justify-between h-48"
       style={{ borderTop: '1px solid rgb(113 113 122)', height: '275px' }}>
       <div className="flex flex-col justify-between h-full">
-        <div className="text-xs text-zinc-700 font-thin">
-          이용약관 | 개인정보취급방침
-        </div>
+        <div className="text-xs text-zinc-700">이용약관 | 개인정보취급방침</div>
         <div className="flex flex-row pb-5">
           <div>
-            <img src={logo1} width="160px" />
+            <img src={logo1} width="100px" />
           </div>
           <div className="ml-20">
-            <img src={logo2} width="320px" />
+            <img src={logo2} width="200px" />
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-between h-full py-6 items-end text-xxs text-zinc-700">
+      <div className="flex flex-col justify-between h-full py-6 items-end text-xs text-zinc-700">
         <div>대표 | 홍 석 현</div>
         <div>사업자등록번호 | 104 - 82 - 10204</div>
         <div>대표번호 | 02 - 751 - 9898</div>

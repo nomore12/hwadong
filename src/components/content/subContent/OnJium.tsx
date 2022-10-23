@@ -54,14 +54,14 @@ const OnJium = () => {
         <div className="flex flex-col w-full">
           <div className="flex flex-row justify-between items-center w-full">
             <p>옷공방</p>
-            <p className="text-xxs text-right">
+            <p className="text-xs text-right text-zinc-500">
               전통복식/유물 재현/21세기 한복 연구, 전통복식사 교육, <br />
               전통복식 및 한복 현대화 관련 연구 용역 등
             </p>
           </div>
           <div className="flex flex-row justify-between items-center w-full mt-12">
             <p>맛공방</p>
-            <p className="text-xxs text-right">
+            <p className="text-xs text-right text-zinc-500">
               고조리서 연구 및 한식 현대와 연구, 전통한식 및 조리이론 교육,
               <br />
               한식 레시피 및 조리 방법 소개 등
@@ -69,7 +69,7 @@ const OnJium = () => {
           </div>
           <div className="flex flex-row justify-between items-center w-full mt-12">
             <p>집공방</p>
-            <p className="text-xxs">
+            <p className="text-xs text-zinc-500">
               한식 구조와 재료 개발 연구, 한옥 및 건축 설계 교육, 한옥과 관련된
               기획 연구 등
             </p>

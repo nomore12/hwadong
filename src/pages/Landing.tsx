@@ -10,7 +10,7 @@ const Landing = () => {
   const variant = {
     initial: { opacity: 1 },
     animate: { opacity: 0 },
-    transition: { duration: 3 },
+    transition: { duration: 0.5 },
   };
   const visible = { opacity: 1, y: 0, transition: { duration: 0.5 } };
   const itemVariants = {
@@ -18,7 +18,7 @@ const Landing = () => {
     visible,
   };
   const timeOut = () => {
-    setTimeout(() => navigate('/main'), 3000);
+    setTimeout(() => navigate('/main'), 2000);
     setOpacity(0);
   };
   useEffect(() => {}, []);
@@ -33,7 +33,7 @@ const Landing = () => {
           // className=""
           initial={{ opacity: 1 }}
           animate={{ opacity: opacity }}
-          transition={{ duration: 4 }}
+          transition={{ duration: 1.8 }}
           style={{
             width: '400px',
             height: '400px',

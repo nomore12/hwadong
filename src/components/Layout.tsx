@@ -60,7 +60,7 @@ const Layout = () => {
       <div className="fixed left-14 top-14 pl-1">
         <img src={logo} alt="logo" width="232px" />
       </div>
-      <div className="fixed right-720 top-48 text-lg tracking-widest text-zinc-900">
+      <div className="fixed right-840 top-48 text-lg tracking-widest text-zinc-900">
         {subject.subject}
       </div>
       <section id="설립목적">
