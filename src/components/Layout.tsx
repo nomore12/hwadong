@@ -54,11 +54,9 @@ const Layout = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="px-5 md:px-20 pt-10 relative flex flex-col items-center md:items-end columns-3 w-full"
+      className="px-5 md:px-20 pt-10 relative flex flex-col items-center md:items-end columns-3 w-full relative"
       onClick={backToMainPage}>
-      <div className="fixed left-16 bottom-20 z-0">
-        <Navigation />
-      </div>
+      <Navigation />
       {isMobile && <MobileNavigation />}
       <div className="fixed left-14 top-14 pl-1 hidden lg:block">
         <img src={logo} alt="logo" width="232px" />
