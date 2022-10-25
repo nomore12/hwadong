@@ -4,6 +4,11 @@
 
 * {
     cursor: none;
+    box-sizing: border-box;
+}
+
+div, p, span {
+    color: rgb(65, 65, 65);
 }
 
 @media screen and (max-width: 1024px) {

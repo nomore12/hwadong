@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-scroll';
 import styled from 'styled-components';
+import { isMobile } from 'react-device-detect';
 
 interface MenuPropsType {
   items: string[];
 }
 
-const ContainerStyle = styled.nav`
+const ContainerStyle = styled.nav<{ isMobile: boolean }>`
   display: flex;
   flex-direction: column;
   width: 222px;
@@ -17,6 +18,10 @@ const ContainerStyle = styled.nav`
   font-weight: 200;
   color: rgba(39, 39, 42, 1);
   letter-spacing: 0.5rem;
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
 
   .menu-li {
     display: flex;
@@ -87,7 +92,7 @@ const Navigation = () => {
   };
 
   return (
-    <ContainerStyle className="nav-container">
+    <ContainerStyle isMobile={isMobile} className="nav-container">
       <ul className="">
         <li className="menu-li" onClick={() => onMenuClick(1)}>
           <p>재단소개</p>
