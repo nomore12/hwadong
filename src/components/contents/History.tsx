@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import useSubjectReplacer from '../../hooks/SubjectReplacer';
 
 interface PropsType {}
 
@@ -56,8 +57,11 @@ const historyContent = [
 ];
 
 const History = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  useSubjectReplacer({ ref: ref, subject: '연혁' });
+
   return (
-    <ContainerStyle>
+    <ContainerStyle ref={ref}>
       <div>
         {historyContent &&
           historyContent.map((item, index) => {

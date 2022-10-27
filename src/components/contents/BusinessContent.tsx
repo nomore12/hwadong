@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import useSubjectReplacer from '../../hooks/SubjectReplacer';
 
 interface PropsType {}
 
@@ -65,8 +66,11 @@ const businessContent = [
 ];
 
 const BusinessContent = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  useSubjectReplacer({ ref: ref, subject: '사업내용' });
+
   return (
-    <ContainerStyle>
+    <ContainerStyle ref={ref}>
       {businessContent &&
         businessContent.map((item, index) => {
           return (

@@ -128,7 +128,9 @@ const Layout = () => {
       <div className="web-logo">
         <img src={logo} alt="logo" width="232px" />
       </div>
-      {!isSubjectHide && <div className="layout-subject">설립목적</div>}
+      {!isSubjectHide && (
+        <div className="layout-subject">{subject.subject}</div>
+      )}
       <div className="section-container">
         <section id="설립목적">
           <ContentContainer>{<Establishment />}</ContentContainer>
@@ -139,7 +141,7 @@ const Layout = () => {
         <section id="사업내용">
           <ContentContainer>{<BusinessContent />}</ContentContainer>
         </section>
-        <section id="위치 및 연락처">
+        <section id="위치및연락처">
           <ContentContainer>{<Contact />}</ContentContainer>
         </section>
         <section id="재단활동소개">
@@ -155,7 +157,7 @@ const Layout = () => {
         </section>
         <section id="연간사업보고">
           <ContentContainer>
-            {<Board boardType="연간사엄보고" lists={listDummy} />}
+            {<Board boardType="연간사업보고" lists={listDummy} />}
           </ContentContainer>
         </section>
         {/*<div style={{ height: '20rem' }}></div>*/}

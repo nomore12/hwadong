@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import ListItem from '../common/ListItem';
+import useSubjectReplacer from '../../hooks/SubjectReplacer';
 
 interface PropsType {
   lists: Array<{ id: number; subject: string; createdAt: string }>;
@@ -19,9 +20,14 @@ const ContainerStyle = styled.ul`
 
 const Board = ({ boardType, lists }: PropsType) => {
   const [type, setType] = useState(boardType);
+  const ref = useRef<any>(null);
+  useSubjectReplacer({
+    ref: ref,
+    subject: boardType,
+  });
 
   return (
-    <ContainerStyle>
+    <ContainerStyle ref={ref} className="board">
       {lists &&
         lists.map((item, index) => {
           return (

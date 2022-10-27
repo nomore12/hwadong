@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import useSubjectReplacer from '../../hooks/SubjectReplacer';
 
 interface PropsType {}
 
@@ -26,8 +27,11 @@ const ContainerStyle = styled.div`
 `;
 
 const Archive = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  useSubjectReplacer({ ref: ref, subject: '재단활동아카이브' });
+
   return (
-    <ContainerStyle className="activity">
+    <ContainerStyle ref={ref} className="activity">
       <p className="activity-item__subject">갤러리</p>
       <p className="activity-item__desc">
         재단법인 화동문화재단의 지나온 활동과 관련 아카이브리

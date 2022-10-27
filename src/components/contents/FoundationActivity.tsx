@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import useSubjectReplacer from '../../hooks/SubjectReplacer';
 
 interface PropsType {}
 
@@ -26,8 +27,11 @@ const ContainerStyle = styled.div`
 `;
 
 const FoundationActivity = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  useSubjectReplacer({ ref: ref, subject: '재단활동소개' });
+
   return (
-    <ContainerStyle className="activity">
+    <ContainerStyle className="activity" ref={ref}>
       <p className="activity-item__subject">[전통문화연구소ㅣ 온지음]</p>
       <p className="activity-item__desc">
         ‘과거와 현재가 온전히 만나 미래를 짓다’

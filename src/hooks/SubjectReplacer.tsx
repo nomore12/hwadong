@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from 'src/store/Hooks';
 import { changeSubject } from 'src/store/Slice';
 
 interface PropsType {
-  ref: React.MutableRefObject<HTMLDivElement | null>;
+  ref: React.MutableRefObject<HTMLDivElement | HTMLUListElement | null>;
   subject: string;
 }
 
