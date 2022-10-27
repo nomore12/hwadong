@@ -13,7 +13,7 @@ const ContainerStyle = styled.div`
   padding: 200px 4rem 0 4rem;
   margin-bottom: 20rem;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1024px) {
     width: 100%;
     padding: 1rem;
     margin-bottom: 10rem;

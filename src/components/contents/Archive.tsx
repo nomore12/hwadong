@@ -26,6 +26,14 @@ const ContainerStyle = styled.div`
     font-size: 0.8rem;
     padding: 4px 0;
   }
+
+  .mobile-subject {
+    display: none;
+
+    @media screen and (max-width: 1024px) {
+      display: block;
+    }
+  }
 `;
 
 const Archive = () => {
@@ -35,6 +43,7 @@ const Archive = () => {
 
   return (
     <ContainerStyle ref={ref} className="activity">
+      {/*<p className="mobile-subject">아카이브</p>*/}
       <p
         className="activity-item__subject"
         onMouseMove={onMouseEnter}
@@ -45,7 +54,7 @@ const Archive = () => {
         갤러리
       </p>
       <p className="activity-item__desc">
-        재단법인 화동문화재단의 지나온 활동과 관련 아카이브리
+        재단법인 화동문화재단의 지나온 활동과 관련 아카이브
       </p>
       <p
         className="activity-item__subject"

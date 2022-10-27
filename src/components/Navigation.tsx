@@ -36,7 +36,7 @@ const ContainerStyle = styled.nav<{ isMobile: boolean }>`
     }
 
     .strong {
-      font-weight: 400;
+      font-weight: 600;
     }
   }
 
@@ -71,7 +71,7 @@ const Menu = ({ items }: MenuPropsType) => {
               className="menu-item-link"
               style={{
                 fontWeight: `${
-                  item === subject || item === compare ? '400' : ''
+                  item === subject || item === compare ? '600' : ''
                 }`,
               }}
               key={index}

@@ -35,10 +35,6 @@ const ContainerStyle = styled(motion.div)<{ color: string }>`
   background-color: ${(props) => (props.color ? props.color : '#fff')};
   transition: background-color 1000ms linear;
 
-  .section-container {
-    //margin-top: 140px;
-  }
-
   @media screen and (max-width: 768px) {
     .section-container {
       width: 100%;
@@ -55,9 +51,25 @@ const ContainerStyle = styled(motion.div)<{ color: string }>`
     }
   }
 
+  .mobile-logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    padding: 1rem 0 0 1rem;
+    background-color: ${(props) => (props.color ? props.color : '#fff')};
+    transition: background-color 1000ms linear;
+
+    @media screen and (max-width: 1024px) {
+      display: flex;
+    }
+  }
+
   .layout-subject {
     position: fixed;
-    left: 446px;
+    //left: 446px;
+    left: 580px;
     top: calc(4rem + 140px);
     font-size: 1.1rem;
     letter-spacing: 0.2rem;
@@ -72,6 +84,29 @@ const ContainerStyle = styled(motion.div)<{ color: string }>`
 
     :first-child {
       margin-top: 4rem;
+    }
+  }
+
+  .mobile-subject {
+    display: none;
+    margin: 4rem 1rem 0 1rem;
+
+    @media screen and (max-width: 1024px) {
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      border-bottom: 1px solid rgba(39, 39, 42, 0.6);
+      font-size: 1.2rem;
+      letter-spacing: 0.5rem;
+    }
+  }
+
+  .mobile-height {
+    height: 128px;
+    display: none;
+
+    @media screen and (max-width: 1024px) {
+      display: flex;
     }
   }
 `;
@@ -104,7 +139,6 @@ const Layout = () => {
   };
 
   useEffect(() => {
-    // 1240px
     window.addEventListener('scroll', () => {
       const scrollHeight = Math.max(
         document.body.scrollHeight,
@@ -116,17 +150,17 @@ const Layout = () => {
       );
 
       const scrollPosition = window.scrollY / scrollHeight;
-      // if (scrollPosition < 0.2) {
-      //   setColor('#e3ded9');
-      // } else if (scrollPosition >= 0.2 && scrollPosition < 0.4) {
-      //   setColor('#e1e3da');
-      // } else if (scrollPosition >= 0.4 && scrollPosition < 0.6) {
-      //   setColor('#dae3e1');
-      // } else if (scrollPosition >= 0.6 && scrollPosition < 0.8) {
-      //   setColor('#dadce3');
-      // } else {
-      //   setColor('#e3dada');
-      // }
+      if (scrollPosition < 0.2) {
+        setColor('#e3ded9');
+      } else if (scrollPosition >= 0.2 && scrollPosition < 0.4) {
+        setColor('#e1e3da');
+      } else if (scrollPosition >= 0.4 && scrollPosition < 0.6) {
+        setColor('#dae3e1');
+      } else if (scrollPosition >= 0.6 && scrollPosition < 0.8) {
+        setColor('#dadce3');
+      } else {
+        setColor('#e3dada');
+      }
     });
   });
 
@@ -141,6 +175,9 @@ const Layout = () => {
       <div className="web-logo">
         <img src={logo} alt="logo" width="232px" />
       </div>
+      <div className="mobile-logo">
+        <img src={logo} alt="logo" width="128px" />
+      </div>
       {!isSubjectHide && (
         <div className="layout-subject">{subject.subject}</div>
       )}
@@ -150,29 +187,38 @@ const Layout = () => {
             path="/*"
             element={
               <div>
+                <div className="mobile-height"></div>
+                <p className="mobile-subject">설립목적</p>
                 <section id="설립목적">
                   <ContentContainer>{<Establishment />}</ContentContainer>
                 </section>
+                <p className="mobile-subject">연혁</p>
                 <section id="연혁">
                   <ContentContainer>{<History />}</ContentContainer>
                 </section>
+                <p className="mobile-subject">사업내용</p>
                 <section id="사업내용">
                   <ContentContainer>{<BusinessContent />}</ContentContainer>
                 </section>
+                <p className="mobile-subject">위치 및 연락처</p>
                 <section id="위치및연락처">
                   <ContentContainer>{<Contact />}</ContentContainer>
                 </section>
+                <p className="mobile-subject">재단활동 소개</p>
                 <section id="재단활동소개">
                   <ContentContainer>{<FoundationActivity />}</ContentContainer>
                 </section>
+                <p className="mobile-subject">재단활동 아카이브</p>
                 <section id="재단활동아카이브">
                   <ContentContainer>{<Archive />}</ContentContainer>
                 </section>
+                <p className="mobile-subject">공지사항</p>
                 <section id="공지사항">
                   <ContentContainer>
                     {<Board boardType="공지사항" lists={listDummy} />}
                   </ContentContainer>
                 </section>
+                <p className="mobile-subject">연간 사업보고</p>
                 <section id="연간사업보고">
                   <ContentContainer>
                     {<Board boardType="연간사업보고" lists={listDummy} />}
