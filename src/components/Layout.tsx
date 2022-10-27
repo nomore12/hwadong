@@ -44,6 +44,10 @@ const ContainerStyle = styled(motion.div)<{ color: string }>`
     position: fixed;
     top: 4rem;
     left: 4rem;
+
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
   }
 
   .layout-subject {
@@ -52,6 +56,10 @@ const ContainerStyle = styled(motion.div)<{ color: string }>`
     top: calc(4rem + 140px);
     font-size: 1.1rem;
     letter-spacing: 0.2rem;
+
+    @media screen and (max-width: 1300px) {
+      display: none;
+    }
   }
 
   .content-container {
