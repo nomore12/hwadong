@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import useSubjectReplacer from '../../hooks/SubjectReplacer';
+import useMouseEventHook from '../../hooks/UseMouseEventHook';
 
 interface PropsType {}
 
@@ -29,14 +31,31 @@ const ContainerStyle = styled.div`
 const Archive = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   useSubjectReplacer({ ref: ref, subject: '재단활동아카이브' });
+  const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
 
   return (
     <ContainerStyle ref={ref} className="activity">
-      <p className="activity-item__subject">갤러리</p>
+      <p
+        className="activity-item__subject"
+        onMouseMove={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onMouseUp={() => {
+          navigateToPage('/main/gallery');
+        }}>
+        갤러리
+      </p>
       <p className="activity-item__desc">
         재단법인 화동문화재단의 지나온 활동과 관련 아카이브리
       </p>
-      <p className="activity-item__subject">세계문화오픈 | WCO</p>
+      <p
+        className="activity-item__subject"
+        onMouseMove={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onMouseUp={() => {
+          navigateToPage('/main/gallery');
+        }}>
+        세계문화오픈 | WCO
+      </p>
       <p className="activity-item__desc">
         ‘더불어 행복한 세상’을 실현하기 위해 문화의 세계화,
       </p>
@@ -46,7 +65,15 @@ const Archive = () => {
       <p className="activity-item__desc">
         학문적 연구 및 문화 행사를 실천합니다.
       </p>
-      <p className="activity-item__subject">기타 목적 사업</p>
+      <p
+        className="activity-item__subject"
+        onMouseMove={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onMouseUp={() => {
+          navigateToPage('/main/gallery');
+        }}>
+        기타 목적 사업
+      </p>
       <p className="activity-item__desc">
         주요 사업 이외에도 헤리티지 투모로우, 정자나무 가꾸기,
       </p>

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import useSubjectReplacer from '../../hooks/SubjectReplacer';
+import useMouseEventHook from '../../hooks/UseMouseEventHook';
 
 interface PropsType {}
 
@@ -29,10 +30,19 @@ const ContainerStyle = styled.div`
 const FoundationActivity = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   useSubjectReplacer({ ref: ref, subject: '재단활동소개' });
+  const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
 
   return (
     <ContainerStyle className="activity" ref={ref}>
-      <p className="activity-item__subject">[전통문화연구소ㅣ 온지음]</p>
+      <p
+        className="activity-item__subject"
+        onMouseMove={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onMouseUp={() => {
+          navigateToPage('/main/onjium');
+        }}>
+        [전통문화연구소ㅣ 온지음]
+      </p>
       <p className="activity-item__desc">
         ‘과거와 현재가 온전히 만나 미래를 짓다’
       </p>
@@ -42,7 +52,15 @@ const FoundationActivity = () => {
       <p className="activity-item__desc">
         현대화하여 올바른 내일의 유산을 연구합니다.
       </p>
-      <p className="activity-item__subject">[홍진기 창조인상]</p>
+      <p
+        className="activity-item__subject"
+        onMouseMove={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onMouseUp={() => {
+          navigateToPage('/main/hong');
+        }}>
+        [홍진기 창조인상]
+      </p>
       <p className="activity-item__desc">
         ‘혁신적인 창조력의 가치를 믿고 지원하다’
       </p>

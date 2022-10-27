@@ -1,6 +1,6 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react';
 import Navigation from 'src/components/Navigation';
-import logo from './assets/images/logo-2-1.png';
+import logo from './assets/images/new-logo.png';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useAppSelector } from 'src/store/Hooks';
 import { motion } from 'framer-motion';
@@ -18,6 +18,11 @@ import FoundationActivity from './contents/FoundationActivity';
 import Archive from './contents/Archive';
 import Footer from './contents/Footer';
 import MobileFooter from './contents/MobileFooter';
+import Gallery from 'src/components/contents/subContents/Gallery';
+import PageContainer from '../container/PageContainer';
+import Onjium from './contents/subContents/Onjium';
+import Hong from './contents/subContents/Hong';
+import BoardContent from './common/BoardContent';
 
 // @ts-ignore
 const ContainerStyle = styled(motion.div)<{ color: string }>`
@@ -111,17 +116,17 @@ const Layout = () => {
       );
 
       const scrollPosition = window.scrollY / scrollHeight;
-      if (scrollPosition < 0.2) {
-        setColor('#e3ded9');
-      } else if (scrollPosition >= 0.2 && scrollPosition < 0.4) {
-        setColor('#e1e3da');
-      } else if (scrollPosition >= 0.4 && scrollPosition < 0.6) {
-        setColor('#dae3e1');
-      } else if (scrollPosition >= 0.6 && scrollPosition < 0.8) {
-        setColor('#dadce3');
-      } else {
-        setColor('#e3dada');
-      }
+      // if (scrollPosition < 0.2) {
+      //   setColor('#e3ded9');
+      // } else if (scrollPosition >= 0.2 && scrollPosition < 0.4) {
+      //   setColor('#e1e3da');
+      // } else if (scrollPosition >= 0.4 && scrollPosition < 0.6) {
+      //   setColor('#dae3e1');
+      // } else if (scrollPosition >= 0.6 && scrollPosition < 0.8) {
+      //   setColor('#dadce3');
+      // } else {
+      //   setColor('#e3dada');
+      // }
     });
   });
 
@@ -140,34 +145,84 @@ const Layout = () => {
         <div className="layout-subject">{subject.subject}</div>
       )}
       <div className="section-container">
-        <section id="설립목적">
-          <ContentContainer>{<Establishment />}</ContentContainer>
-        </section>
-        <section id="연혁">
-          <ContentContainer>{<History />}</ContentContainer>
-        </section>
-        <section id="사업내용">
-          <ContentContainer>{<BusinessContent />}</ContentContainer>
-        </section>
-        <section id="위치및연락처">
-          <ContentContainer>{<Contact />}</ContentContainer>
-        </section>
-        <section id="재단활동소개">
-          <ContentContainer>{<FoundationActivity />}</ContentContainer>
-        </section>
-        <section id="재단활동아카이브">
-          <ContentContainer>{<Archive />}</ContentContainer>
-        </section>
-        <section id="공지사항">
-          <ContentContainer>
-            {<Board boardType="공지사항" lists={listDummy} />}
-          </ContentContainer>
-        </section>
-        <section id="연간사업보고">
-          <ContentContainer>
-            {<Board boardType="연간사업보고" lists={listDummy} />}
-          </ContentContainer>
-        </section>
+        <Routes>
+          <Route
+            path="/*"
+            element={
+              <div>
+                <section id="설립목적">
+                  <ContentContainer>{<Establishment />}</ContentContainer>
+                </section>
+                <section id="연혁">
+                  <ContentContainer>{<History />}</ContentContainer>
+                </section>
+                <section id="사업내용">
+                  <ContentContainer>{<BusinessContent />}</ContentContainer>
+                </section>
+                <section id="위치및연락처">
+                  <ContentContainer>{<Contact />}</ContentContainer>
+                </section>
+                <section id="재단활동소개">
+                  <ContentContainer>{<FoundationActivity />}</ContentContainer>
+                </section>
+                <section id="재단활동아카이브">
+                  <ContentContainer>{<Archive />}</ContentContainer>
+                </section>
+                <section id="공지사항">
+                  <ContentContainer>
+                    {<Board boardType="공지사항" lists={listDummy} />}
+                  </ContentContainer>
+                </section>
+                <section id="연간사업보고">
+                  <ContentContainer>
+                    {<Board boardType="연간사업보고" lists={listDummy} />}
+                  </ContentContainer>
+                </section>
+              </div>
+            }
+          />
+          <Route
+            path="/gallery"
+            element={
+              <section>
+                <PageContainer>
+                  <Gallery />
+                </PageContainer>
+              </section>
+            }
+          />
+          <Route
+            path="/onjium"
+            element={
+              <section>
+                <PageContainer>
+                  <Onjium />
+                </PageContainer>
+              </section>
+            }
+          />
+          <Route
+            path="/hong"
+            element={
+              <section>
+                <PageContainer>
+                  <Onjium />
+                </PageContainer>
+              </section>
+            }
+          />
+          <Route
+            path="/notice/:id"
+            element={
+              <section>
+                <PageContainer>
+                  <BoardContent />
+                </PageContainer>
+              </section>
+            }
+          />
+        </Routes>
+
         {/*<div style={{ height: '20rem' }}></div>*/}
 
         {/*  <Routes>*/}
