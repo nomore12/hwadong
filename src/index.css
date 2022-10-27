@@ -5,6 +5,8 @@
 * {
     cursor: none;
     box-sizing: border-box;
+    font-family: NotoSansKR helvetica san serif;
+    color: rgba(39, 39, 42, 0.8);
 }
 
 div, p, span {

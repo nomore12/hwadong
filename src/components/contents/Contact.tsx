@@ -24,7 +24,7 @@ const ContainerStyle = styled.div`
     }
 
     .contact__inner--thin {
-      font-weight: 200;
+      font-weight: 400;
     }
   }
 `;
@@ -40,16 +40,16 @@ const Contact = () => {
       <img src={map} alt="map" width={`${isMobileDevice ? '600px' : '100%'}`} />
       <Instagram width="34px" height="34px" />
       <div className="contact__inner">
+        <a className="contact__inner--content" href="tel:02-751-9894">
+          <span className="contact__inner--thin">tel | </span>02. 751. 9898
+        </a>
         <p className="contact__inner--content">
-          <span className="contact__inner--thin">tel</span> | 02. 751. 9898
-        </p>
-        <p className="contact__inner--content">
-          <span className="contact__inner--thin">fax</span> | 02. 751. 9894
+          <span className="contact__inner--thin">fax | </span>02. 751. 9894
         </p>
         <a
           href="mailto:nightwing@naver.com"
           className="contact__inner--content">
-          <span className="contact__inner--thin">email</span> |
+          <span className="contact__inner--thin">email | </span>
           <span
             onMouseEnter={function (e) {
               onMouseEnter(e, 'email');

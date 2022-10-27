@@ -1,0 +1,57 @@
+import React from 'react';
+import styled from 'styled-components';
+
+interface PropsType {}
+
+const ContainerStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  .activity-item__subject {
+    color: rgba(39, 39, 42, 0.8);
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    padding-bottom: 12px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .activity-item__desc {
+    color: rgba(39, 39, 42, 0.6);
+    font-size: 0.8rem;
+    padding: 4px 0;
+  }
+`;
+
+const Archive = () => {
+  return (
+    <ContainerStyle className="activity">
+      <p className="activity-item__subject">갤러리</p>
+      <p className="activity-item__desc">
+        재단법인 화동문화재단의 지나온 활동과 관련 아카이브리
+      </p>
+      <p className="activity-item__subject">세계문화오픈 | WCO</p>
+      <p className="activity-item__desc">
+        ‘더불어 행복한 세상’을 실현하기 위해 문화의 세계화,
+      </p>
+      <p className="activity-item__desc">
+        미래화에 대비하고 다문화 열린 사회의 문화적 터전 마련에 기여하기 위한
+      </p>
+      <p className="activity-item__desc">
+        학문적 연구 및 문화 행사를 실천합니다.
+      </p>
+      <p className="activity-item__subject">기타 목적 사업</p>
+      <p className="activity-item__desc">
+        주요 사업 이외에도 헤리티지 투모로우, 정자나무 가꾸기,
+      </p>
+      <p className="activity-item__desc">
+        장학금 및 학술연구, 종교지원단체 등의 다양한 목적 사업을 진행하고
+        있습니다.
+      </p>
+    </ContainerStyle>
+  );
+};
+
+export default Archive;

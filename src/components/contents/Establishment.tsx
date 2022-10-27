@@ -9,10 +9,14 @@ const ContainerStyle = styled.div`
   align-items: flex-end;
   font-size: 0.9rem;
   gap: 1.8rem;
-  color: rgba(39, 39, 42, 1);
   font-weight: 400;
   width: 320px;
   line-height: 4rem;
+
+  p {
+    color: rgba(39, 39, 42, 0.8);
+    word-break: keep-all;
+  }
 `;
 
 const Establishment = () => {

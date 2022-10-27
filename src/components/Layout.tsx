@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useEffect } from 'react';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import Navigation from 'src/components/Navigation';
 import logo from './assets/images/logo-2-1.png';
 import { Route, Routes, useNavigate } from 'react-router-dom';
@@ -12,13 +12,28 @@ import Establishment from './contents/Establishment';
 import Contact from './contents/Contact';
 import { listDummy } from 'src/dummy';
 import Board from './contents/Board';
+import History from './contents/History';
+import BusinessContent from './contents/BusinessContent';
+import FoundationActivity from './contents/FoundationActivity';
+import Archive from './contents/Archive';
+import Footer from './contents/Footer';
+import MobileFooter from './contents/MobileFooter';
 
-const ContainerStyle = styled(motion.div)`
+// @ts-ignore
+const ContainerStyle = styled(motion.div)<{ color: string }>`
   display: flex;
   justify-content: flex-end;
   position: relative;
   box-sizing: border-box;
   width: 100%;
+  //background-color: #e3ded9;
+  background-color: ${(props) => (props.color ? props.color : '#fff')};
+  transition: background-color 1000ms linear;
+
+  .section-container {
+    //margin-top: 140px;
+  }
+
   @media screen and (max-width: 768px) {
     .section-container {
       width: 100%;
@@ -34,7 +49,7 @@ const ContainerStyle = styled(motion.div)`
   .layout-subject {
     position: fixed;
     left: 446px;
-    top: 4rem;
+    top: calc(4rem + 140px);
     font-size: 1.1rem;
     letter-spacing: 0.2rem;
   }
@@ -52,6 +67,8 @@ const Layout = () => {
   const subject = useAppSelector((state) => state.subject);
   const cursor = useAppSelector((state) => state.cursor);
   const navigate = useNavigate();
+  const [color, setColor] = useState('#e3ded9');
+  const [isSubjectHide, setSubjectHide] = useState(false);
 
   const backToMainPage = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cursor.curr === 'main' || isMobile) return;
@@ -73,8 +90,36 @@ const Layout = () => {
     }
   };
 
+  useEffect(() => {
+    // 1240px
+    window.addEventListener('scroll', () => {
+      const scrollHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.clientHeight,
+        document.documentElement.clientHeight
+      );
+
+      const scrollPosition = window.scrollY / scrollHeight;
+      if (scrollPosition < 0.2) {
+        setColor('#e3ded9');
+      } else if (scrollPosition >= 0.2 && scrollPosition < 0.4) {
+        setColor('#e1e3da');
+      } else if (scrollPosition >= 0.4 && scrollPosition < 0.6) {
+        setColor('#dae3e1');
+      } else if (scrollPosition >= 0.6 && scrollPosition < 0.8) {
+        setColor('#dadce3');
+      } else {
+        setColor('#e3dada');
+      }
+    });
+  });
+
   return (
     <ContainerStyle
+      color={color}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
@@ -83,34 +128,38 @@ const Layout = () => {
       <div className="web-logo">
         <img src={logo} alt="logo" width="232px" />
       </div>
-      <div className="layout-subject">설립목적</div>
+      {!isSubjectHide && <div className="layout-subject">설립목적</div>}
       <div className="section-container">
-        <ContentContainer>{<Establishment />}</ContentContainer>
-        <ContentContainer>{<Contact />}</ContentContainer>
-        <ContentContainer>
-          {<Board boardType="공지사항" lists={listDummy} />}
-        </ContentContainer>
-        <ContentContainer>
-          {<Board boardType="연간사엄보고" lists={listDummy} />}
-        </ContentContainer>
-        <ContentContainer>{<Establishment />}</ContentContainer>
+        <section id="설립목적">
+          <ContentContainer>{<Establishment />}</ContentContainer>
+        </section>
+        <section id="연혁">
+          <ContentContainer>{<History />}</ContentContainer>
+        </section>
+        <section id="사업내용">
+          <ContentContainer>{<BusinessContent />}</ContentContainer>
+        </section>
+        <section id="위치 및 연락처">
+          <ContentContainer>{<Contact />}</ContentContainer>
+        </section>
+        <section id="재단활동소개">
+          <ContentContainer>{<FoundationActivity />}</ContentContainer>
+        </section>
+        <section id="재단활동아카이브">
+          <ContentContainer>{<Archive />}</ContentContainer>
+        </section>
+        <section id="공지사항">
+          <ContentContainer>
+            {<Board boardType="공지사항" lists={listDummy} />}
+          </ContentContainer>
+        </section>
+        <section id="연간사업보고">
+          <ContentContainer>
+            {<Board boardType="연간사엄보고" lists={listDummy} />}
+          </ContentContainer>
+        </section>
+        {/*<div style={{ height: '20rem' }}></div>*/}
 
-        {/*<section id="설립목적">*/}
-        {/*  <Establishment></Establishment>*/}
-        {/*</section>*/}
-        {/*<section id="연혁">*/}
-        {/*  <Establishment></Establishment>*/}
-        {/*</section>*/}
-        {/*<section id="연혁">*/}
-        {/*  <History></History>*/}
-        {/*</section>*/}
-        {/*<section id="사업내용">*/}
-        {/*  <BusinessContent></BusinessContent>*/}
-        {/*</section>*/}
-        {/*<section id="위치 및 연락처">*/}
-        {/*  <Contact></Contact>*/}
-        {/*</section>*/}
-        {/*<section id="재단활동소개">*/}
         {/*  <Routes>*/}
         {/*    <Route path="/*" element={<FoundationActivity />} />*/}
         {/*    <Route path="/onjium" element={<OnJium />} />*/}
@@ -140,13 +189,7 @@ const Layout = () => {
         {/*  </BusinessReport>*/}
         {/*</section>*/}
       </div>
-      {/*<p className="fixed left-16 top-80 hidden xl:hidden lg:block">*/}
-      {/*  {subject.subject}*/}
-      {/*</p>*/}
-      {/*<div className="fixed right-840 top-48 text-lg tracking-widest text-zinc-900 hidden xl:block">*/}
-      {/*  {subject.subject}*/}
-      {/*</div>*/}
-      {/*<Footer />*/}
+      {isMobile ? <MobileFooter /> : <Footer />}
     </ContainerStyle>
   );
 };

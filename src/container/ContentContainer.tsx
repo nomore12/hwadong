@@ -5,18 +5,18 @@ interface PropsType {
   children?: React.ReactNode;
 }
 
-const ContainerStyle = styled.section`
+const ContainerStyle = styled.div`
   display: flex;
   justify-content: flex-end;
-  //border: 1px solid red;
   width: 768px;
-  padding: 0 4rem;
   text-align: end;
+  padding: 200px 4rem 0 4rem;
+  margin-bottom: 20rem;
 
   @media only screen and (max-width: 768px) {
     width: 100%;
-    //width: ;
     padding: 1rem;
+    margin-bottom: 10rem;
   }
 `;
 

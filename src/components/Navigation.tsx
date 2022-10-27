@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-scroll';
+import { Link, animateScroll } from 'react-scroll';
+import * as Scroll from 'react-scroll';
 import styled from 'styled-components';
 import { isMobile } from 'react-device-detect';
 
@@ -54,7 +55,13 @@ const Menu = ({ items }: MenuPropsType) => {
       {items &&
         items.map((item, index) => {
           return (
-            <Link className="menu-item-link" key={index} to={item} smooth spy>
+            <Link
+              className="menu-item-link"
+              key={index}
+              to={item}
+              // onSetActive={(e, el) => animateScroll.scrollMore(-140)}
+              smooth
+              spy>
               {item}
             </Link>
           );
