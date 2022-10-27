@@ -1,6 +1,6 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react';
 import Navigation from 'src/components/Navigation';
-import logo from './assets/images/new-logo.png';
+import logo from './assets/images/logo-2-1.png';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useAppSelector } from 'src/store/Hooks';
 import { motion } from 'framer-motion';
