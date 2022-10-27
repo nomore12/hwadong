@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from 'src/components/assets/images/logo-2-1.png.png';
+import logo from 'src/components/assets/images/logo-2-1.png';
 import { animate, motion, AnimatePresence, useIsPresent } from 'framer-motion';
 
 const Landing = () => {
