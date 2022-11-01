@@ -150,17 +150,17 @@ const Layout = () => {
       );
 
       const scrollPosition = window.scrollY / scrollHeight;
-      // if (scrollPosition < 0.2) {
-      //   setColor('#e3ded9');
-      // } else if (scrollPosition >= 0.2 && scrollPosition < 0.4) {
-      //   setColor('#e1e3da');
-      // } else if (scrollPosition >= 0.4 && scrollPosition < 0.6) {
-      //   setColor('#dae3e1');
-      // } else if (scrollPosition >= 0.6 && scrollPosition < 0.8) {
-      //   setColor('#dadce3');
-      // } else {
-      //   setColor('#e3dada');
-      // }
+      if (scrollPosition < 0.2) {
+        setColor('#e3ded9');
+      } else if (scrollPosition >= 0.2 && scrollPosition < 0.4) {
+        setColor('#e1e3da');
+      } else if (scrollPosition >= 0.4 && scrollPosition < 0.6) {
+        setColor('#dae3e1');
+      } else if (scrollPosition >= 0.6 && scrollPosition < 0.8) {
+        setColor('#dadce3');
+      } else {
+        setColor('#e3dada');
+      }
     });
   });
 
