@@ -116,7 +116,12 @@ const Navigation = () => {
 
   useEffect(() => {
     // console.log(document.documentElement.clientWidth);
-    if (document.documentElement.clientWidth > 1300) return;
+    if (document.documentElement.clientWidth > 1300) {
+      setMenu1(false);
+      setMenu2(false);
+      setMenu3(false);
+      return;
+    }
     if (['설립목적', '연혁', '사업내용', '위치 및 연락처'].includes(subject)) {
       setMenu1(true);
       setMenu2(false);
@@ -130,7 +135,7 @@ const Navigation = () => {
       setMenu2(false);
       setMenu3(true);
     }
-  }, [subject]);
+  }, [subject, document.documentElement.clientWidth]);
 
   return (
     <ContainerStyle isMobile={isMobile} className="nav-container">
