@@ -52,7 +52,15 @@ const ContainerStyle = styled.li`
 const ListItem = ({ index, subject, createdAt }: PropsType) => {
   return (
     <ContainerStyle>
-      <Link to="/main/notice/1" className="board-list-item">
+      <Link
+        to="/main/notice/1"
+        className="board-list-item"
+        onClick={() => {
+          localStorage.setItem(
+            'curr',
+            String(document.documentElement.scrollTop)
+          );
+        }}>
         <div className="list-item__index">{index}</div>
         <div className="list-item__subject">{subject}</div>
         <div className="list-item__created-at">{createdAt}</div>

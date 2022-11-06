@@ -1,7 +1,7 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react';
 import Navigation from 'src/components/Navigation';
 import logo from './assets/images/logo-2-1.png';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import { useAppSelector } from 'src/store/Hooks';
 import { motion } from 'framer-motion';
 import { isMobile } from 'react-device-detect';
@@ -23,6 +23,7 @@ import PageContainer from '../container/PageContainer';
 import Onjium from './contents/subContents/Onjium';
 import Hong from './contents/subContents/Hong';
 import BoardContent from './common/BoardContent';
+import { animateScroll } from 'react-scroll';
 
 // @ts-ignore
 const ContainerStyle = styled(motion.div)<{ color: string }>`
@@ -31,7 +32,6 @@ const ContainerStyle = styled(motion.div)<{ color: string }>`
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  //background-color: #e3ded9;
   background-color: ${(props) => (props.color ? props.color : '#fff')};
   transition: background-color 1000ms linear;
 
@@ -117,6 +117,7 @@ const Layout = () => {
   const navigate = useNavigate();
   const [color, setColor] = useState('#e3ded9');
   const [isSubjectHide, setSubjectHide] = useState(false);
+  const location = useLocation();
 
   const backToMainPage = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cursor.curr === 'main' || isMobile) return;
@@ -137,6 +138,15 @@ const Layout = () => {
       navigate('/main');
     }
   };
+
+  useEffect(() => {
+    const pos = localStorage.getItem('curr');
+    if (pos) {
+      animateScroll.scrollTo(Number(pos), { duration: 0 });
+
+      // localStorage.setItem('curr', '0');
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {

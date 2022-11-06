@@ -41,15 +41,19 @@ const Archive = () => {
   useSubjectReplacer({ ref: ref, subject: '재단활동아카이브' });
   const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
 
+  const memorizeScroll = (url: string) => {
+    localStorage.setItem('curr', String(document.documentElement.scrollTop));
+    navigateToPage(url);
+  };
+
   return (
     <ContainerStyle ref={ref} className="activity">
-      {/*<p className="mobile-subject">아카이브</p>*/}
       <p
         className="activity-item__subject"
         onMouseMove={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onMouseUp={() => {
-          navigateToPage('/main/gallery');
+          memorizeScroll('/main/gallery');
         }}>
         갤러리
       </p>
@@ -61,7 +65,7 @@ const Archive = () => {
         onMouseMove={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onMouseUp={() => {
-          navigateToPage('/main/gallery');
+          memorizeScroll('/main/gallery');
         }}>
         세계문화오픈 | WCO
       </p>
@@ -79,7 +83,7 @@ const Archive = () => {
         onMouseMove={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onMouseUp={() => {
-          navigateToPage('/main/gallery');
+          memorizeScroll('/main/gallery');
         }}>
         기타 목적 사업
       </p>

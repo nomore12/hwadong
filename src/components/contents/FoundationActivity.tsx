@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import useSubjectReplacer from '../../hooks/SubjectReplacer';
 import useMouseEventHook from '../../hooks/UseMouseEventHook';
@@ -31,6 +31,14 @@ const FoundationActivity = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   useSubjectReplacer({ ref: ref, subject: '재단활동소개' });
   const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
+  const [currPosition, setCurrPosition] = useState(0);
+
+  useEffect(() => {
+    console.log(document.documentElement.scrollTop);
+    return () => {
+      // localStorage.removeItem('curr');
+    };
+  }, []);
 
   return (
     <ContainerStyle className="activity" ref={ref}>
@@ -39,6 +47,10 @@ const FoundationActivity = () => {
         onMouseMove={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onMouseUp={() => {
+          localStorage.setItem(
+            'curr',
+            String(document.documentElement.scrollTop)
+          );
           navigateToPage('/main/onjium');
         }}>
         [전통문화연구소ㅣ 온지음]
