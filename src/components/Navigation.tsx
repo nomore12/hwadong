@@ -147,7 +147,7 @@ const Navigation = () => {
         </li>
         <li className="menu-li" onClick={() => onMenuClick(3)}>
           <p className={`${menu3 ? 'strong' : ''}`}>재단소식</p>
-          {menu3 && <Menu items={['공지사항', '연간사업보고', '자료실']} />}
+          {menu3 && <Menu items={['공지사항', '연간사업보고']} />}
         </li>
       </ul>
     </ContainerStyle>

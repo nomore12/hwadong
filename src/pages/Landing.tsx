@@ -2,6 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from 'src/components/assets/images/logo-2-1.png';
 import { animate, motion, AnimatePresence, useIsPresent } from 'framer-motion';
+import styled from 'styled-components';
+
+const ContainerStyle = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -24,20 +33,36 @@ const Landing = () => {
 
   return (
     <AnimatePresence mode="wait" initial={false}>
-      <div className="relative flex justify-center items-center h-screen">
+      <ContainerStyle>
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: opacity }}
           transition={{ duration: 1.8 }}
-          style={{
-            width: '400px',
-            height: '400px',
-          }}
+          style={
+            {
+              // width: '400px',
+              // height: '400px',
+            }
+          }
           onClick={timeOut}
           className="privacy-screen">
           <img className="landing-logo" src={logo} width="360px" />
         </motion.div>
-      </div>
+      </ContainerStyle>
+      {/*<div className="relative flex justify-center items-center h-screen">*/}
+      {/*  <motion.div*/}
+      {/*    initial={{ opacity: 1 }}*/}
+      {/*    animate={{ opacity: opacity }}*/}
+      {/*    transition={{ duration: 1.8 }}*/}
+      {/*    style={{*/}
+      {/*      width: '400px',*/}
+      {/*      height: '400px',*/}
+      {/*    }}*/}
+      {/*    onClick={timeOut}*/}
+      {/*    className="privacy-screen">*/}
+      {/*    <img className="landing-logo" src={logo} width="360px" />*/}
+      {/*  </motion.div>*/}
+      {/*</div>*/}
     </AnimatePresence>
   );
 };
