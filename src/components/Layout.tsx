@@ -1,33 +1,122 @@
-import React, { MouseEventHandler, useEffect } from 'react';
-import ContentWrapper from 'src/components/ContentWrapper';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import Navigation from 'src/components/Navigation';
-import Establishment from 'src/components/content/Establishment';
-import History from 'src/components/content/History';
 import logo from './assets/images/logo-2-1.png';
-import Notice from 'src/components/content/Notice';
-import NoticeBoard from 'src/components/content/NoticeBoard';
-import NoticeContent from 'src/components/content/subContent/NoticeContent';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import BusinessContent from './content/BusinessContent';
-import Contact from 'src/components/content/Contact';
-import FoundationActivity from 'src/components/content/FoundationActivity';
-import Archive from 'src/components/content/Archive';
-import OnJium from 'src/components/content/subContent/OnJium';
-import Gallery from './content/subContent/Gallery';
-import Footer from './Footer';
 import { useAppSelector } from 'src/store/Hooks';
 import { motion } from 'framer-motion';
-import Hongjingi from './content/subContent/Hongjingi';
-import BusinessReport from './content/BusinessReport';
-import BusinessReportContent from './content/subContent/BusinessReportContent';
-import BusinessBoard from './content/BusinessBoard';
 import { isMobile } from 'react-device-detect';
 import MobileNavigation from './MobileNavigation';
+import styled from 'styled-components';
+import ContentContainer from '../container/ContentContainer';
+import Establishment from './contents/Establishment';
+import Contact from './contents/Contact';
+import { listDummy } from 'src/dummy';
+import Board from './contents/Board';
+import History from './contents/History';
+import BusinessContent from './contents/BusinessContent';
+import FoundationActivity from './contents/FoundationActivity';
+import Archive from './contents/Archive';
+import Footer from './contents/Footer';
+import MobileFooter from './contents/MobileFooter';
+import Gallery from 'src/components/contents/subContents/Gallery';
+import PageContainer from '../container/PageContainer';
+import Onjium from './contents/subContents/Onjium';
+import Hong from './contents/subContents/Hong';
+import BoardContent from './common/BoardContent';
+
+// @ts-ignore
+const ContainerStyle = styled(motion.div)<{ color: string }>`
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  //background-color: #e3ded9;
+  background-color: ${(props) => (props.color ? props.color : '#fff')};
+  transition: background-color 1000ms linear;
+
+  @media screen and (max-width: 768px) {
+    .section-container {
+      width: 100%;
+    }
+  }
+
+  .web-logo {
+    position: fixed;
+    top: 4rem;
+    left: 4rem;
+
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  .mobile-logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    padding: 1rem 0 0 1rem;
+    background-color: ${(props) => (props.color ? props.color : '#fff')};
+    transition: background-color 1000ms linear;
+
+    @media screen and (max-width: 1024px) {
+      display: flex;
+    }
+  }
+
+  .layout-subject {
+    position: fixed;
+    //left: 446px;
+    left: 580px;
+    top: calc(4rem + 140px);
+    font-size: 1.1rem;
+    letter-spacing: 0.2rem;
+
+    @media screen and (max-width: 1300px) {
+      display: none;
+    }
+  }
+
+  .content-container {
+    margin-top: 20rem;
+
+    :first-child {
+      margin-top: 4rem;
+    }
+  }
+
+  .mobile-subject {
+    display: none;
+    margin: 4rem 1rem 0 1rem;
+
+    @media screen and (max-width: 1024px) {
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      border-bottom: 1px solid rgba(39, 39, 42, 0.6);
+      font-size: 1.2rem;
+      letter-spacing: 0.5rem;
+    }
+  }
+
+  .mobile-height {
+    height: 128px;
+    display: none;
+
+    @media screen and (max-width: 1024px) {
+      display: flex;
+    }
+  }
+`;
 
 const Layout = () => {
   const subject = useAppSelector((state) => state.subject);
   const cursor = useAppSelector((state) => state.cursor);
   const navigate = useNavigate();
+  const [color, setColor] = useState('#e3ded9');
+  const [isSubjectHide, setSubjectHide] = useState(false);
 
   const backToMainPage = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cursor.curr === 'main' || isMobile) return;
@@ -49,69 +138,170 @@ const Layout = () => {
     }
   };
 
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      const scrollHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.clientHeight,
+        document.documentElement.clientHeight
+      );
+
+      const scrollPosition = window.scrollY / scrollHeight;
+      if (scrollPosition < 0.2) {
+        setColor('#e3ded9');
+      } else if (scrollPosition >= 0.2 && scrollPosition < 0.4) {
+        setColor('#e1e3da');
+      } else if (scrollPosition >= 0.4 && scrollPosition < 0.6) {
+        setColor('#dae3e1');
+      } else if (scrollPosition >= 0.6 && scrollPosition < 0.8) {
+        setColor('#dadce3');
+      } else {
+        setColor('#e3dada');
+      }
+    });
+  });
+
   return (
-    <motion.div
+    <ContainerStyle
+      color={color}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="px-5 md:px-20 pt-10 relative flex flex-col items-center md:items-end columns-3 w-full"
       onClick={backToMainPage}>
-      <div className="fixed left-16 bottom-20 z-0">
-        <Navigation />
-      </div>
-      {isMobile && <MobileNavigation />}
-      <div className="fixed left-14 top-14 pl-1 hidden lg:block">
+      <Navigation />
+      <div className="web-logo">
         <img src={logo} alt="logo" width="232px" />
-        <p className="fixed left-16 top-80 hidden xl:hidden lg:block">
-          {subject.subject}
-        </p>
       </div>
-      <div className="fixed right-840 top-48 text-lg tracking-widest text-zinc-900 hidden xl:block">
-        {subject.subject}
+      <div className="mobile-logo">
+        <img src={logo} alt="logo" width="128px" />
       </div>
-      <section id="설립목적">
-        <Establishment></Establishment>
-      </section>
-      <section id="연혁">
-        <History></History>
-      </section>
-      <section id="사업내용">
-        <BusinessContent></BusinessContent>
-      </section>
-      <section id="위치 및 연락처">
-        <Contact></Contact>
-      </section>
-      <section id="재단활동소개">
+      {!isSubjectHide && (
+        <div className="layout-subject">{subject.subject}</div>
+      )}
+      <div className="section-container">
         <Routes>
-          <Route path="/*" element={<FoundationActivity />} />
-          <Route path="/onjium" element={<OnJium />} />
-          <Route path="/hong" element={<Hongjingi />} />
+          <Route
+            path="/*"
+            element={
+              <div>
+                <div className="mobile-height"></div>
+                <p className="mobile-subject">설립목적</p>
+                <section id="설립목적">
+                  <ContentContainer>{<Establishment />}</ContentContainer>
+                </section>
+                <p className="mobile-subject">연혁</p>
+                <section id="연혁">
+                  <ContentContainer>{<History />}</ContentContainer>
+                </section>
+                <p className="mobile-subject">사업내용</p>
+                <section id="사업내용">
+                  <ContentContainer>{<BusinessContent />}</ContentContainer>
+                </section>
+                <p className="mobile-subject">위치 및 연락처</p>
+                <section id="위치및연락처">
+                  <ContentContainer>{<Contact />}</ContentContainer>
+                </section>
+                <p className="mobile-subject">재단활동 소개</p>
+                <section id="재단활동소개">
+                  <ContentContainer>{<FoundationActivity />}</ContentContainer>
+                </section>
+                <p className="mobile-subject">재단활동 아카이브</p>
+                <section id="재단활동아카이브">
+                  <ContentContainer>{<Archive />}</ContentContainer>
+                </section>
+                <p className="mobile-subject">공지사항</p>
+                <section id="공지사항">
+                  <ContentContainer>
+                    {<Board boardType="공지사항" lists={listDummy} />}
+                  </ContentContainer>
+                </section>
+                <p className="mobile-subject">연간 사업보고</p>
+                <section id="연간사업보고">
+                  <ContentContainer>
+                    {<Board boardType="연간사업보고" lists={listDummy} />}
+                  </ContentContainer>
+                </section>
+              </div>
+            }
+          />
+          <Route
+            path="/gallery"
+            element={
+              <section>
+                <PageContainer>
+                  <Gallery />
+                </PageContainer>
+              </section>
+            }
+          />
+          <Route
+            path="/onjium"
+            element={
+              <section>
+                <PageContainer>
+                  <Onjium />
+                </PageContainer>
+              </section>
+            }
+          />
+          <Route
+            path="/hong"
+            element={
+              <section>
+                <PageContainer>
+                  <Onjium />
+                </PageContainer>
+              </section>
+            }
+          />
+          <Route
+            path="/notice/:id"
+            element={
+              <section>
+                <PageContainer>
+                  <BoardContent />
+                </PageContainer>
+              </section>
+            }
+          />
         </Routes>
-      </section>
-      <section id="재단활동아카이브">
-        <Routes>
-          <Route path="/*" element={<Archive />} />
-          <Route path="/gallery" element={<Gallery />} />
-        </Routes>
-      </section>
-      <section
-        id="공지사항"
-        className="flex flex-col items-start sm:items-end m-auto w-full">
-        <Notice>
-          <Routes>
-            <Route path="/*" element={<NoticeBoard />} />
-            <Route path="/notice/:id" element={<NoticeContent />} />
-          </Routes>
-        </Notice>
-        <BusinessReport>
-          <Routes>
-            <Route path="/*" element={<BusinessBoard />} />
-            <Route path="/report/:id" element={<BusinessReportContent />} />
-          </Routes>
-        </BusinessReport>
-      </section>
-      <Footer />
-    </motion.div>
+
+        {/*<div style={{ height: '20rem' }}></div>*/}
+
+        {/*  <Routes>*/}
+        {/*    <Route path="/*" element={<FoundationActivity />} />*/}
+        {/*    <Route path="/onjium" element={<OnJium />} />*/}
+        {/*    <Route path="/hong" element={<Hongjingi />} />*/}
+        {/*  </Routes>*/}
+        {/*</section>*/}
+        {/*<section id="재단활동아카이브">*/}
+        {/*  <Routes>*/}
+        {/*    <Route path="/*" element={<Archive />} />*/}
+        {/*    <Route path="/gallery" element={<Gallery />} />*/}
+        {/*  </Routes>*/}
+        {/*</section>*/}
+        {/*<section*/}
+        {/*  id="공지사항"*/}
+        {/*  className="flex flex-col items-start sm:items-end m-auto w-full">*/}
+        {/*  <Notice>*/}
+        {/*    <Routes>*/}
+        {/*      <Route path="/*" element={<NoticeBoard />} />*/}
+        {/*      <Route path="/notice/:id" element={<NoticeContent />} />*/}
+        {/*    </Routes>*/}
+        {/*  </Notice>*/}
+        {/*  <BusinessReport>*/}
+        {/*    <Routes>*/}
+        {/*      <Route path="/*" element={<BusinessBoard />} />*/}
+        {/*      <Route path="/report/:id" element={<BusinessReportContent />} />*/}
+        {/*    </Routes>*/}
+        {/*  </BusinessReport>*/}
+        {/*</section>*/}
+      </div>
+      {isMobile ? <MobileFooter /> : <Footer />}
+    </ContainerStyle>
   );
 };
 

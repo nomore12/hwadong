@@ -25,7 +25,7 @@ const Archive = () => {
           </p>
         </Link>
         <p className="font-thin text-xs">
-          재단법인 화동문화재단의 지나온 활동과 관련 아카이브
+          재단법인 화동문화재단의 지나온 활동과 관련 아카이브리
         </p>
         <p className="mt-12 relative">
           세계문화오픈 | WCO

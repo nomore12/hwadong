@@ -28,9 +28,17 @@ const CursorStyle = styled.div<{ x: number; y: number }>`
 
 const CursorText = ({ text }: CursorTextPropsType) => {
   return (
-    <>
-      <p>{text}</p>
-    </>
+    <p
+      className="cursor-text"
+      style={{
+        color: 'white',
+        fontSize: '0.8rem',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      {text}
+    </p>
   );
 };
 
