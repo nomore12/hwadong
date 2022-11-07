@@ -55,18 +55,6 @@ const Archive = () => {
         onMouseUp={() => {
           memorizeScroll('/main/gallery');
         }}>
-        갤러리
-      </p>
-      <p className="activity-item__desc">
-        재단법인 화동문화재단의 지나온 활동과 관련 아카이브
-      </p>
-      <p
-        className="activity-item__subject"
-        onMouseMove={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-        onMouseUp={() => {
-          memorizeScroll('/main/gallery');
-        }}>
         세계문화오픈 | WCO
       </p>
       <p className="activity-item__desc">
@@ -78,6 +66,7 @@ const Archive = () => {
       <p className="activity-item__desc">
         학문적 연구 및 문화 행사를 실천합니다.
       </p>
+      {/* ----------------------------------------------------- */}
       <p
         className="activity-item__subject"
         onMouseMove={onMouseEnter}

@@ -45,18 +45,33 @@ const ContainerStyle = styled.div`
       font-size: 0.8rem;
     }
   }
+
+  .onjium-link {
+    width: 6rem;
+    align-self: flex-end;
+  }
 `;
 
 const OnJium = () => {
   const dispatch = useAppDispatch();
   const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
 
+  // 이상하게 백버튼이 활성화되지 않고 있음.
   useEffect(() => {
+    console.log('onjium');
     dispatch(changeCurr('archive'));
     dispatch(changeText('back'));
     dispatch(changeSubject('온지음'));
 
-    // animateScroll.scrollTo(2950);
+    window.addEventListener(
+      'focus',
+      () => {
+        dispatch(changeCurr('archive'));
+        dispatch(changeText('back'));
+        dispatch(changeSubject('온지음'));
+      },
+      false
+    );
 
     return () => {
       dispatch(changeCurr('main'));
@@ -79,7 +94,11 @@ const OnJium = () => {
           계승하여 한국 문화를 알리는 대표 브랜드 생산을 목표로 하고 있습니다.
         </p>
       </div>
-      <a href="https://onjium.org/" target="_blank" rel="noreferrer">
+      <a
+        className="onjium-link"
+        href="https://onjium.org/"
+        target="_blank"
+        rel="noreferrer">
         <div
           onMouseEnter={function (e) {
             onMouseEnter(e, 'LINK');

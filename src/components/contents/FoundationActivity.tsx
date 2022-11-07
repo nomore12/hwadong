@@ -34,7 +34,7 @@ const FoundationActivity = () => {
   const [currPosition, setCurrPosition] = useState(0);
 
   useEffect(() => {
-    console.log(document.documentElement.scrollTop);
+    // console.log(document.documentElement.scrollTop);
     return () => {
       // localStorage.removeItem('curr');
     };

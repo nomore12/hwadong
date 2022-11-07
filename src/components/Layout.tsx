@@ -143,8 +143,6 @@ const Layout = () => {
     const pos = localStorage.getItem('curr');
     if (pos) {
       animateScroll.scrollTo(Number(pos), { duration: 0 });
-
-      // localStorage.setItem('curr', '0');
     }
   }, [location.pathname]);
 
