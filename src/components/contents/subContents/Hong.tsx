@@ -4,6 +4,55 @@ import { useAppDispatch } from '../../../store/Hooks';
 import useMouseEventHook from '../../../hooks/UseMouseEventHook';
 import { changeCurr, changeSubject, changeText } from '../../../store/Slice';
 import { animateScroll } from 'react-scroll';
+import styled from 'styled-components';
+
+const ContainerStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 160px;
+  padding-bottom: 230px;
+  height: 100%;
+
+  .onjium-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    p {
+      color: rgba(39, 39, 42, 0.8);
+    }
+  }
+
+  a {
+    padding: 1rem 0;
+    color: rgba(39, 39, 42, 0.8);
+  }
+
+  .onjium-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  .onjium-content-item {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      font-size: 0.9rem;
+    }
+
+    .content-item__desc {
+      font-size: 0.8rem;
+    }
+  }
+
+  .onjium-link {
+    width: 6rem;
+    align-self: flex-end;
+  }
+`;
 
 const Hong = () => {
   const dispatch = useAppDispatch();
@@ -12,7 +61,7 @@ const Hong = () => {
   useEffect(() => {
     dispatch(changeCurr('archive'));
     dispatch(changeText('back'));
-    dispatch(changeSubject('온지음'));
+    dispatch(changeSubject('홍진기 창조인상'));
 
     // animateScroll.scrollTo(2950);
 
@@ -24,19 +73,25 @@ const Hong = () => {
   }, []);
 
   return (
-    <div>
-      <div>
+    <ContainerStyle>
+      <div className="onjium-desc">
+        <p>대한민국 건국과 산업 발전기에 정부 · 기업 · 언론분야에서 활동하며</p>
         <p>
-          {'"온 | 모두 온전하게", "지음 | 만들다, 이어가다, 뜻이 통하다"라는'}
-        </p>
-        <p>의미를 가지고 지난 2013년 6월 문을 연 전통문화연구소로,</p>
-        <p>
-          의/식/주 세 부분의 21세기형 장인 육성과 한국 전통 문화를 창조적으로
+          창조적인 삶을 실천하는데 온 힘을 쏟았던 고(故) 유민 홍진기 전 중앙일보
         </p>
         <p>
-          계승하여 한국 문화를 알리는 대표 브랜드 생산을 목표로 하고 있습니다.
+          회장의 유지를 기리기 위해 제정되어 과학기술, 사회, 문화예술의 세
+          분야에서
         </p>
-        <a href="https://onjium.org/" target="_blank" rel="noreferrer">
+        <p>
+          창의적인 업적을 이룩한 개인이나 단체를 대상으로 각 분야를 대표하는
+        </p>
+        <p>심사위원의 엄정한 심사를 거쳐 매년 수상자를 선정하고 있습니다.</p>
+        <a
+          className="onjium-link"
+          href="https://onjium.org/"
+          target="_blank"
+          rel="noreferrer">
           <div
             onMouseEnter={function (e) {
               onMouseEnter(e, 'LINK');
@@ -45,33 +100,8 @@ const Hong = () => {
             LINK
           </div>
         </a>
-        <div>
-          <div>
-            <p>옷공방</p>
-            <p>
-              전통복식/유물 재현/21세기 한복 연구, 전통복식사 교육, <br />
-              전통복식 및 한복 현대화 관련 연구 용역 등
-            </p>
-          </div>
-          <div>
-            <p>맛공방</p>
-            <p>
-              고조리서 연구 및 한식 현대와 연구, 전통한식 및 조리이론 교육,
-              <br />
-              한식 레시피 및 조리 방법 소개 등
-            </p>
-          </div>
-          <div>
-            <p>집공방</p>
-            <p>
-              한식 구조와 재료 개발 연구, 한옥 및 건축 설계 교육,
-              <br />
-              한옥과 관련된 기획 연구 등
-            </p>
-          </div>
-        </div>
       </div>
-    </div>
+    </ContainerStyle>
   );
 };
 
