@@ -1,10 +1,11 @@
 import React from 'react';
-import { useAppDispatch } from '../store/Hooks';
+import { useAppDispatch, useAppSelector } from '../store/Hooks';
 import { changeCurr, changeText } from '../store/Slice';
 import { useNavigate } from 'react-router-dom';
 
 const useMouseEventHook = () => {
   const dispatch = useAppDispatch();
+  const state = useAppSelector((state) => state);
   const navigate = useNavigate();
 
   const onMouseEnter = (
@@ -19,6 +20,7 @@ const useMouseEventHook = () => {
     e: React.MouseEvent<HTMLDivElement | HTMLAnchorElement | HTMLSpanElement>,
     text?: string
   ) => {
+    console.log(state);
     text ? dispatch(changeCurr(text)) : dispatch(changeCurr('main'));
     text ? dispatch(changeText(text)) : dispatch(changeText(''));
   };

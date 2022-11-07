@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../../store/Hooks';
 import useMouseEventHook from '../../../hooks/UseMouseEventHook';
@@ -55,6 +55,7 @@ const ContainerStyle = styled.div`
 const OnJium = () => {
   const dispatch = useAppDispatch();
   const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
+  const [isClicked, setClick] = useState(false);
 
   // 이상하게 백버튼이 활성화되지 않고 있음.
   useEffect(() => {
@@ -98,12 +99,23 @@ const OnJium = () => {
         className="onjium-link"
         href="https://onjium.org/"
         target="_blank"
-        rel="noreferrer">
+        rel="noreferrer"
+        onClick={(e) => {
+          console.log(Object.keys(e.target));
+
+          setClick(true);
+          e.preventDefault();
+        }}>
         <div
+          className="link"
           onMouseEnter={function (e) {
-            onMouseEnter(e, 'LINK');
+            if (!isClicked) onMouseEnter(e, 'LINK');
           }}
-          onMouseLeave={onMouseLeave}>
+          onMouseLeave={(e) => {
+            if (!isClicked) {
+              onMouseLeave(e, 'back');
+            }
+          }}>
           LINK
         </div>
       </a>

@@ -96,7 +96,7 @@ const Hong = () => {
             onMouseEnter={function (e) {
               onMouseEnter(e, 'LINK');
             }}
-            onMouseLeave={onMouseLeave}>
+            onMouseLeave={(e) => onMouseLeave(e, 'back')}>
             LINK
           </div>
         </a>
