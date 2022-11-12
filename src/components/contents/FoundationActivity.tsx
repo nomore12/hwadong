@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import useSubjectReplacer from '../../hooks/SubjectReplacer';
 import useMouseEventHook from '../../hooks/UseMouseEventHook';
+import { changeCurr, changeSubject, changeText } from '../../store/Slice';
 
 interface PropsType {}
 
@@ -33,13 +34,6 @@ const FoundationActivity = () => {
   const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
   const [currPosition, setCurrPosition] = useState(0);
 
-  useEffect(() => {
-    // console.log(document.documentElement.scrollTop);
-    return () => {
-      // localStorage.removeItem('curr');
-    };
-  }, []);
-
   return (
     <ContainerStyle className="activity" ref={ref}>
       <p
@@ -47,10 +41,10 @@ const FoundationActivity = () => {
         onMouseMove={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onMouseUp={() => {
-          localStorage.setItem(
-            'curr',
-            String(document.documentElement.scrollTop)
-          );
+          // localStorage.setItem(
+          //   'curr',
+          //   String(document.documentElement.scrollTop)
+          // );
           navigateToPage('/main/onjium');
         }}>
         [전통문화연구소ㅣ 온지음]

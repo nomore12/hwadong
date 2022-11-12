@@ -131,7 +131,8 @@ const Layout = () => {
       (e.target as any).classList.contains('control-arrow') ||
       (e.target as any).classList.contains('dot') ||
       (e.target as any).classList.contains('control-dots') ||
-      (e.target as any).classList.contains('out-link')
+      (e.target as any).classList.contains('out-link') ||
+      (e.target as any).classList.contains('link')
     ) {
       return;
     } else {

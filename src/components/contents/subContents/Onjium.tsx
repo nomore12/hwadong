@@ -55,24 +55,18 @@ const ContainerStyle = styled.div`
 const OnJium = () => {
   const dispatch = useAppDispatch();
   const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
-  const [isClicked, setClick] = useState(false);
 
   // 이상하게 백버튼이 활성화되지 않고 있음.
   useEffect(() => {
-    console.log('onjium');
     dispatch(changeCurr('archive'));
     dispatch(changeText('back'));
     dispatch(changeSubject('온지음'));
 
-    window.addEventListener(
-      'focus',
-      () => {
-        dispatch(changeCurr('archive'));
-        dispatch(changeText('back'));
-        dispatch(changeSubject('온지음'));
-      },
-      false
-    );
+    window.addEventListener('focus', () => {
+      dispatch(changeCurr('archive'));
+      dispatch(changeText('back'));
+      dispatch(changeSubject('온지음'));
+    });
 
     return () => {
       dispatch(changeCurr('main'));
@@ -99,23 +93,13 @@ const OnJium = () => {
         className="onjium-link"
         href="https://onjium.org/"
         target="_blank"
-        rel="noreferrer"
-        onClick={(e) => {
-          console.log(Object.keys(e.target));
-
-          setClick(true);
-          e.preventDefault();
-        }}>
+        rel="noreferrer">
         <div
           className="link"
           onMouseEnter={function (e) {
-            if (!isClicked) onMouseEnter(e, 'LINK');
+            onMouseEnter(e, 'LINK');
           }}
-          onMouseLeave={(e) => {
-            if (!isClicked) {
-              onMouseLeave(e, 'back');
-            }
-          }}>
+          onMouseLeave={(e) => onMouseLeave(e, 'back')}>
           LINK
         </div>
       </a>

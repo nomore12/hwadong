@@ -63,7 +63,11 @@ const Hong = () => {
     dispatch(changeText('back'));
     dispatch(changeSubject('홍진기 창조인상'));
 
-    // animateScroll.scrollTo(2950);
+    window.addEventListener('focus', () => {
+      dispatch(changeCurr('archive'));
+      dispatch(changeText('back'));
+      dispatch(changeSubject('홍진기 창조인상'));
+    });
 
     return () => {
       dispatch(changeCurr('main'));
@@ -88,11 +92,12 @@ const Hong = () => {
         </p>
         <p>심사위원의 엄정한 심사를 거쳐 매년 수상자를 선정하고 있습니다.</p>
         <a
-          className="onjium-link"
+          className="hong-link"
           href="https://onjium.org/"
           target="_blank"
           rel="noreferrer">
           <div
+            className="link"
             onMouseEnter={function (e) {
               onMouseEnter(e, 'LINK');
             }}

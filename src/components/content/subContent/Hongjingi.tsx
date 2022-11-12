@@ -53,9 +53,7 @@ const Hongjingi = () => {
             onMouseEnter={function (e) {
               onMouseEnter(e, 'LINK');
             }}
-            onMouseLeave={function (e) {
-              onMouseLeave(e, 'back');
-            }}>
+            onMouseLeave={onMouseLeave}>
             LINK
           </div>
         </a>
