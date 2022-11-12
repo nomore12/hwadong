@@ -57,22 +57,24 @@ const ContainerStyle = styled.div`
 const Hong = () => {
   const dispatch = useAppDispatch();
   const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
+  const eventListener = () => {
+    dispatch(changeCurr('archive'));
+    dispatch(changeText('back'));
+    dispatch(changeSubject('홍진기 창조인상'));
+  };
 
   useEffect(() => {
     dispatch(changeCurr('archive'));
     dispatch(changeText('back'));
     dispatch(changeSubject('홍진기 창조인상'));
 
-    window.addEventListener('focus', () => {
-      dispatch(changeCurr('archive'));
-      dispatch(changeText('back'));
-      dispatch(changeSubject('홍진기 창조인상'));
-    });
+    window.addEventListener('focus', eventListener);
 
     return () => {
       dispatch(changeCurr('main'));
       dispatch(changeText(''));
       dispatch(changeSubject('재단활동소개'));
+      window.removeEventListener('focus', eventListener);
     };
   }, []);
 

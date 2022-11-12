@@ -56,22 +56,25 @@ const OnJium = () => {
   const dispatch = useAppDispatch();
   const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
 
+  const eventListener = () => {
+    dispatch(changeCurr('archive'));
+    dispatch(changeText('back'));
+    dispatch(changeSubject('온지음'));
+  };
+
   // 이상하게 백버튼이 활성화되지 않고 있음.
   useEffect(() => {
     dispatch(changeCurr('archive'));
     dispatch(changeText('back'));
     dispatch(changeSubject('온지음'));
 
-    window.addEventListener('focus', () => {
-      dispatch(changeCurr('archive'));
-      dispatch(changeText('back'));
-      dispatch(changeSubject('온지음'));
-    });
+    window.addEventListener('focus', eventListener);
 
     return () => {
       dispatch(changeCurr('main'));
       dispatch(changeText(''));
       dispatch(changeSubject('재단활동소개'));
+      window.removeEventListener('focus', eventListener);
     };
   }, []);
 
