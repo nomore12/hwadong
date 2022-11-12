@@ -41,10 +41,10 @@ const FoundationActivity = () => {
         onMouseMove={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onMouseUp={() => {
-          // localStorage.setItem(
-          //   'curr',
-          //   String(document.documentElement.scrollTop)
-          // );
+          localStorage.setItem(
+            'curr',
+            String(document.documentElement.scrollTop)
+          );
           navigateToPage('/main/onjium');
         }}>
         [전통문화연구소ㅣ 온지음]
@@ -63,6 +63,10 @@ const FoundationActivity = () => {
         onMouseMove={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onMouseUp={() => {
+          localStorage.setItem(
+            'curr',
+            String(document.documentElement.scrollTop)
+          );
           navigateToPage('/main/hong');
         }}>
         [홍진기 창조인상]
