@@ -24,6 +24,7 @@ import Onjium from './contents/subContents/Onjium';
 import Hong from './contents/subContents/Hong';
 import BoardContent from './common/BoardContent';
 import { animateScroll } from 'react-scroll';
+import Overlay from './Overlay';
 
 // @ts-ignore
 const ContainerStyle = styled(motion.div)<{ color: string }>`
@@ -64,6 +65,14 @@ const ContainerStyle = styled(motion.div)<{ color: string }>`
     @media screen and (max-width: 1024px) {
       display: flex;
     }
+  }
+
+  .mobile-nav {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 4px;
+    background: black;
   }
 
   .layout-subject {
@@ -114,6 +123,7 @@ const ContainerStyle = styled(motion.div)<{ color: string }>`
 const Layout = () => {
   const subject = useAppSelector((state) => state.subject);
   const cursor = useAppSelector((state) => state.cursor);
+  const overlay = useAppSelector((state) => state.overlay.enabled);
   const navigate = useNavigate();
   const [color, setColor] = useState('#e3ded9');
   const [isSubjectHide, setSubjectHide] = useState(false);
@@ -180,6 +190,7 @@ const Layout = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
       onClick={backToMainPage}>
+      {overlay && <Overlay />}
       <Navigation />
       <div className="web-logo">
         <img src={logo} alt="logo" width="232px" />
@@ -187,6 +198,7 @@ const Layout = () => {
       <div className="mobile-logo">
         <img src={logo} alt="logo" width="128px" />
       </div>
+      <MobileNavigation />
       {!isSubjectHide && (
         <div className="layout-subject">{subject.subject}</div>
       )}

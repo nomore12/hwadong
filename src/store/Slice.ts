@@ -25,6 +25,10 @@ const cursorInitialState: CursorState = {
   curr: 'main',
 };
 
+const overlayInitialState = {
+  enabled: false,
+};
+
 export const subjectSlice = createSlice({
   name: 'subject',
   initialState: subjectInitialState,
@@ -48,11 +52,23 @@ export const cursorSlice = createSlice({
   },
 });
 
+export const overlaySlice = createSlice({
+  name: 'overlay',
+  initialState: overlayInitialState,
+  reducers: {
+    onOffOverlay: (state, action: PayloadAction<boolean>) => {
+      state.enabled = action.payload;
+    },
+  },
+});
+
 export const { changeSubject } = subjectSlice.actions;
 export const { changeText, changeCurr } = cursorSlice.actions;
+export const { onOffOverlay } = overlaySlice.actions;
 export const getSubject = (state: RootState) => state.subject;
 export const getCurrState = (state: RootState) => state.cursor.curr;
-export const [subjectReducer, cursorReducer] = [
+export const [subjectReducer, cursorReducer, overlayReducer] = [
   subjectSlice.reducer,
   cursorSlice.reducer,
+  overlaySlice.reducer,
 ];
