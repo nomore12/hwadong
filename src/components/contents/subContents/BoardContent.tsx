@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import ListItem from '../../common/ListItem';
+import ListItem from 'src/components/common/ListItem';
+import { animateScroll } from 'react-scroll';
 
 interface PropsType {
   id?: number;
@@ -38,7 +39,7 @@ const BoardContent = () => {
   const param = useParams();
 
   useEffect(() => {
-    console.log('board', param);
+    animateScroll.scrollToTop();
   }, []);
 
   return (

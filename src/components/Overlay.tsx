@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../store/Hooks';
 import { onOffOverlay } from '../store/Slice';
 import { Link } from 'react-scroll';
+import { useNavigate } from 'react-router-dom';
 
 // interface PropsType {
 //
@@ -38,6 +39,7 @@ const ContainerStyle = styled.div`
 const Overlay = () => {
   const dispatch = useAppDispatch();
   const enabled = useAppSelector((state) => state.overlay.enabled);
+  const navigate = useNavigate();
 
   const onClick = () => {
     dispatch(onOffOverlay(!enabled));
@@ -45,6 +47,13 @@ const Overlay = () => {
 
   return (
     <ContainerStyle>
+      <div
+        onClick={() => {
+          navigate('/main');
+          dispatch(onOffOverlay(!enabled));
+        }}>
+        <h1>홈</h1>
+      </div>
       <Link smooth spy to="설립목적" offset={-250} onClick={onClick}>
         <h1>설립목적</h1>
       </Link>
