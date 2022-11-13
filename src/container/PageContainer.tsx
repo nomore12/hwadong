@@ -9,7 +9,7 @@ interface PropsType {
 const ContainerStyle = styled.div`
   display: flex;
   width: 768px;
-  justify-content: flex-end;
+  justify-content: center;
   text-align: end;
   padding: 40px 4rem 0 4rem;
   margin-bottom: 20rem;

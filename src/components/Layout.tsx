@@ -22,7 +22,7 @@ import Gallery from 'src/components/contents/subContents/Gallery';
 import PageContainer from '../container/PageContainer';
 import Onjium from './contents/subContents/Onjium';
 import Hong from './contents/subContents/Hong';
-import BoardContent from './common/BoardContent';
+import BoardContent from 'src/components/contents/subContents/BoardContent';
 import { animateScroll } from 'react-scroll';
 import Overlay from './Overlay';
 
