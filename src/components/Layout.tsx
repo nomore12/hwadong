@@ -282,9 +282,9 @@ const Layout = () => {
             path="/notice/:id"
             element={
               <section>
-                <PageContainer>
+                <ContentContainer>
                   <BoardContent />
-                </PageContainer>
+                </ContentContainer>
               </section>
             }
           />

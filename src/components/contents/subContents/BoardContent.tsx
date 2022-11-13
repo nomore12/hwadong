@@ -14,9 +14,11 @@ interface PropsType {
 const ContainerStyle = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  width: 100%;
+  min-height: 467px;
 
   @media screen and (max-width: 768px) {
+    height: calc(100vh - 160px);
     padding-top: 160px;
   }
 
