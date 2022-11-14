@@ -27,3 +27,8 @@ body {
     border: none;
 
 }
+
+@font-face {
+    font-family: 'NotoSansKR';
+    src: url("src/static/fonts/NotoSansKR-Regular.ttf");
+}
