@@ -11,44 +11,25 @@ const ContainerStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .landing-logo {
+    width: 360px;
+
+    @media screen and (max-width: 768px) {
+      width: 10rem;
+    }
+  }
 `;
 
 const Landing = () => {
   const navigate = useNavigate();
   const [opacity, setOpacity] = useState(1);
-  const isPresent = useIsPresent();
-  const variant = {
-    initial: { opacity: 1 },
-    animate: { opacity: 0 },
-    transition: { duration: 0.5 },
-  };
   const visible = { opacity: 1, y: 0, transition: { duration: 0.5 } };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible,
-  };
+
   const timeOut = () => {
     setTimeout(() => navigate('/main'), 2000);
     setOpacity(0);
   };
-
-  useEffect(() => {
-    // animateScroll.scrollToTop();
-    // const windowClose = (event: BeforeUnloadEvent) => {
-    //   console.log(event);
-    //   event.preventDefault();
-    //   if (event) event.returnValue = '';
-    //   localStorage.removeItem('curr');
-    //   animateScroll.scrollTo(0, { delay: 0 });
-    //   return '';
-    // };
-    // console.log(localStorage.getItem('curr'));
-    // window.onbeforeunload = windowClose;
-    // // return () => {
-    // //   // window.addEventListener('beforeunload', windowClose);
-    // //   // localStorage.getItem('curr') && localStorage.removeItem('curr');
-    // // };
-  }, []);
 
   return (
     <AnimatePresence mode="wait" initial={false}>
@@ -59,7 +40,7 @@ const Landing = () => {
           transition={{ duration: 1.8 }}
           onClick={timeOut}
           className="privacy-screen">
-          <img className="landing-logo" src={logo} width="360px" />
+          <img className="landing-logo" src={logo} />
         </motion.div>
       </ContainerStyle>
     </AnimatePresence>
