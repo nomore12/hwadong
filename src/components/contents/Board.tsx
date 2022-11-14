@@ -16,6 +16,7 @@ const ContainerStyle = styled.ul`
   align-items: flex-end;
   max-width: 640px;
   margin-bottom: 10rem;
+  border-bottom: 1px solid rgba(39, 39, 42, 0.6);
 `;
 
 const Board = ({ boardType, lists }: PropsType) => {

@@ -11,6 +11,7 @@ interface PropsType {
 const ContainerStyle = styled.li`
   align-self: flex-end;
   width: 100%;
+  font-size: 0.8rem;
 
   .board-list-item {
     display: flex;
@@ -28,7 +29,7 @@ const ContainerStyle = styled.li`
     }
 
     &:last-child {
-      border-bottom: 1px solid rgba(39, 39, 42, 0.6);
+      //border-bottom: 1px solid rgba(39, 39, 42, 0.6);
     }
 
     .list-item__index {

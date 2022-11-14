@@ -31,7 +31,7 @@ const ContainerStyle = styled.div`
       padding: 2px 4px;
       border-radius: 3px;
       //border: 1px solid #414141ff;
-      background-color: rgba(255, 255, 255, 0.4);
+      //background-color: rgba(255, 255, 255, 0.4);
     }
   }
 `;

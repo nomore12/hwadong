@@ -1,7 +1,13 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react';
 import Navigation from 'src/components/Navigation';
 import logo from './assets/images/logo-2-1.png';
-import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import {
+  Route,
+  Routes,
+  useNavigate,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import { useAppSelector } from 'src/store/Hooks';
 import { motion } from 'framer-motion';
 import { isMobile } from 'react-device-detect';
@@ -75,17 +81,31 @@ const ContainerStyle = styled(motion.div)<{ color: string }>`
     background: black;
   }
 
+  .section-container {
+    //border: 1px solid black;
+
+    @media screen and (max-width: 1230px) {
+      //display: none;
+    }
+  }
+
+  .subject-layout-wrapper {
+    width: 100%;
+    //border: 1px solid black;
+    position: relative;
+
+    @media screen and (max-width: 1230px) {
+      display: none;
+    }
+  }
+
   .layout-subject {
     position: fixed;
     //left: 446px;
-    left: 580px;
+    right: 746px;
     top: calc(4rem + 140px);
     font-size: 1.1rem;
     letter-spacing: 0.2rem;
-
-    @media screen and (max-width: 1300px) {
-      display: none;
-    }
   }
 
   .content-container {
@@ -105,7 +125,7 @@ const ContainerStyle = styled(motion.div)<{ color: string }>`
       display: flex;
       justify-content: flex-end;
       border-bottom: 1px solid rgba(39, 39, 42, 0.6);
-      font-size: 1.2rem;
+      font-size: 1rem;
       letter-spacing: 0.5rem;
     }
   }
@@ -128,6 +148,7 @@ const Layout = () => {
   const [color, setColor] = useState('#e3ded9');
   const [isSubjectHide, setSubjectHide] = useState(false);
   const location = useLocation();
+  const params = useParams();
 
   const backToMainPage = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cursor.curr === 'main' || isMobile) return;
@@ -155,6 +176,7 @@ const Layout = () => {
     if (pos) {
       animateScroll.scrollTo(Number(pos), { duration: 0 });
     }
+    console.log(location.pathname);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -183,6 +205,10 @@ const Layout = () => {
     });
   });
 
+  useEffect(() => {
+    console.log(params);
+  }, []);
+
   return (
     <ContainerStyle
       color={color}
@@ -199,9 +225,11 @@ const Layout = () => {
         <img src={logo} alt="logo" width="128px" />
       </div>
       <MobileNavigation />
-      {!isSubjectHide && (
-        <div className="layout-subject">{subject.subject}</div>
-      )}
+      <div className="subject-layout-wrapper">
+        {!isSubjectHide && (
+          <div className="layout-subject">{subject.subject}</div>
+        )}
+      </div>
       <div className="section-container">
         <Routes>
           <Route
@@ -289,39 +317,9 @@ const Layout = () => {
             }
           />
         </Routes>
-
-        {/*<div style={{ height: '20rem' }}></div>*/}
-
-        {/*  <Routes>*/}
-        {/*    <Route path="/*" element={<FoundationActivity />} />*/}
-        {/*    <Route path="/onjium" element={<OnJium />} />*/}
-        {/*    <Route path="/hong" element={<Hongjingi />} />*/}
-        {/*  </Routes>*/}
-        {/*</section>*/}
-        {/*<section id="재단활동아카이브">*/}
-        {/*  <Routes>*/}
-        {/*    <Route path="/*" element={<Archive />} />*/}
-        {/*    <Route path="/gallery" element={<Gallery />} />*/}
-        {/*  </Routes>*/}
-        {/*</section>*/}
-        {/*<section*/}
-        {/*  id="공지사항"*/}
-        {/*  className="flex flex-col items-start sm:items-end m-auto w-full">*/}
-        {/*  <Notice>*/}
-        {/*    <Routes>*/}
-        {/*      <Route path="/*" element={<NoticeBoard />} />*/}
-        {/*      <Route path="/notice/:id" element={<NoticeContent />} />*/}
-        {/*    </Routes>*/}
-        {/*  </Notice>*/}
-        {/*  <BusinessReport>*/}
-        {/*    <Routes>*/}
-        {/*      <Route path="/*" element={<BusinessBoard />} />*/}
-        {/*      <Route path="/report/:id" element={<BusinessReportContent />} />*/}
-        {/*    </Routes>*/}
-        {/*  </BusinessReport>*/}
-        {/*</section>*/}
       </div>
-      {isMobile ? <MobileFooter /> : <Footer />}
+      {location.pathname === '/main' &&
+        (isMobile ? <MobileFooter /> : <Footer />)}
     </ContainerStyle>
   );
 };

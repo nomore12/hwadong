@@ -95,7 +95,7 @@ const Hong = () => {
         <p>심사위원의 엄정한 심사를 거쳐 매년 수상자를 선정하고 있습니다.</p>
         <a
           className="hong-link"
-          href="https://onjium.org/"
+          href="https://www.yumin.org/main.html"
           target="_blank"
           rel="noreferrer">
           <div

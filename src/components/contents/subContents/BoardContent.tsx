@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import ListItem from 'src/components/common/ListItem';
 import { animateScroll } from 'react-scroll';
+import { useAppDispatch } from '../../../store/Hooks';
+import useMouseEventHook from '../../../hooks/UseMouseEventHook';
+import { changeCurr, changeSubject, changeText } from '../../../store/Slice';
 
 interface PropsType {
   id?: number;
@@ -10,6 +13,7 @@ interface PropsType {
   subject?: string;
   content?: string;
   imgUrl: string;
+  type: string;
 }
 
 const ContainerStyle = styled.div`
@@ -37,6 +41,43 @@ const ContainerStyle = styled.div`
 
 const BoardContent = () => {
   const param = useParams();
+  const dispatch = useAppDispatch();
+  const { onMouseEnter, onMouseLeave, navigateToPage } = useMouseEventHook();
+  const location = useLocation();
+  const [type, setType] = useState('');
+
+  const eventListener = () => {
+    dispatch(changeCurr('archive'));
+    dispatch(changeText('back'));
+    dispatch(
+      changeSubject(
+        location.pathname === '/main/notice' ? '공지사항' : '연간사업보고'
+      )
+    );
+  };
+
+  useEffect(() => {
+    dispatch(changeCurr('archive'));
+    dispatch(changeText('back'));
+    dispatch(
+      changeSubject(
+        location.pathname === '/main/notice' ? '공지사항' : '연간사업보고'
+      )
+    );
+
+    window.addEventListener('focus', eventListener);
+
+    return () => {
+      dispatch(changeCurr('main'));
+      dispatch(changeText(''));
+      dispatch(
+        changeSubject(
+          location.pathname === '/main/notice' ? '공지사항' : '연간사업보고'
+        )
+      );
+      window.removeEventListener('focus', eventListener);
+    };
+  }, []);
 
   useEffect(() => {
     animateScroll.scrollToTop();
