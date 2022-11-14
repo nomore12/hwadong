@@ -7,6 +7,7 @@ import * as Scroll from 'react-scroll';
 import { animateScroll, Events } from 'react-scroll';
 import styled from 'styled-components';
 import { isMobile } from 'react-device-detect';
+import arrow from 'src/static/images/logo.svg';
 
 const ContainerStyle = styled.div`
   display: flex;
@@ -16,9 +17,33 @@ const ContainerStyle = styled.div`
 
   .gallery-carousel {
     width: 100%;
+    margin-bottom: 2rem;
 
     @media screen and (max-width: 768px) {
       //width: 80%;
+    }
+
+    .control-arrow,
+    .control-prev {
+      &:hover {
+        background: transparent;
+      }
+    }
+
+    .carousel .control-prev.control-arrow:before {
+      border-right: 8px solid #fff;
+      //background: black;
+      //background: url(../../../static/images/logo.svg);
+    }
+
+    .carousel .control-arrow:before,
+    .carousel.carousel-slider .control-arrow:before {
+      // arrow
+      //background: black;
+    }
+
+    .control-arrow::before {
+      //background: black;
     }
   }
 `;
@@ -48,7 +73,13 @@ const Gallery = () => {
     dispatch(changeCurr('archive'));
     dispatch(changeText('back'));
     dispatch(changeSubject('갤러리'));
-    // animateScroll.scrollTo(0);
+
+    const arrow = document.querySelector('.control-arrow');
+    // const elem = document.createElement('div');
+    // elem.innerHTML = 'dd';
+    // arrow ? arrow.insertBefore(elem, null) : null;
+    // arrow.
+    // arrow ? arrow.before(elem) : null;
 
     return () => {
       dispatch(changeCurr('main'));
