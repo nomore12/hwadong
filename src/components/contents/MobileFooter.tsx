@@ -15,10 +15,17 @@ const ContainerStyle = styled.footer`
   font-size: 0.8rem;
   color: rgba(39, 39, 42, 0.8);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 
   .mobile-footer-logo {
     padding-bottom: 1rem;
+  }
+
+  .logos {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
   }
 `;
 
@@ -34,12 +41,12 @@ const MobileFooter = () => {
         <p>주소 | 서울특별시 중구 서소문로 100</p>
         <p>COPYRIGHT (C) 2022 KSA ALL RIGHTS RESERVED.</p>
       </div>
-      <div>
+      <div className="logos">
         <div className="mobile-footer-logo">
-          <img src={logo1} alt="logo" width="60px" />
+          <img src={logo1} alt="logo" width="80px" />
         </div>
         <div className="mobile-footer-logo">
-          <img src={logo2} alt="logo" width="60px" />
+          <img src={logo2} alt="logo" width="160px" />
         </div>
       </div>
     </ContainerStyle>

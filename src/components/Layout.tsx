@@ -149,6 +149,7 @@ const Layout = () => {
   const [isSubjectHide, setSubjectHide] = useState(false);
   const location = useLocation();
   const params = useParams();
+  const [innderWidth, setinnerWidth] = useState(0);
 
   const backToMainPage = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cursor.curr === 'main' || isMobile) return;
@@ -204,6 +205,11 @@ const Layout = () => {
       }
     });
   });
+
+  useEffect(() => {
+    const width = window.innerWidth;
+    setinnerWidth(width);
+  }, [window.innerWidth]);
 
   useEffect(() => {
     console.log(params);
@@ -319,7 +325,7 @@ const Layout = () => {
         </Routes>
       </div>
       {location.pathname === '/main' &&
-        (isMobile ? <MobileFooter /> : <Footer />)}
+        (isMobile && innderWidth < 1024 ? <MobileFooter /> : <Footer />)}
     </ContainerStyle>
   );
 };
