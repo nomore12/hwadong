@@ -53,10 +53,10 @@ const FoundationActivity = () => {
         ‘과거와 현재가 온전히 만나 미래를 짓다’
       </p>
       <p className="activity-item__desc">
-        우리 전통 문화에 담긴 가치와 정신을 계승하고 이를
+        우리 전통 문화에 담긴 가치와 정신을 계승하고
       </p>
       <p className="activity-item__desc">
-        현대화하여 올바른 내일의 유산을 연구합니다.
+        이를 현대화하여 올바른 내일의 유산을 연구합니다.
       </p>
       <p
         className="activity-item__subject"

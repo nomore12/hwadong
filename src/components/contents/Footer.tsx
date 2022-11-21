@@ -57,15 +57,22 @@ const Footer = () => {
         <div className="footer-left__subject">이용약관 | 개인정보취급방침</div>
         <div className="footer-left__logowrapper">
           <div>
-            <img src={logo1} alt="logo" width="100px" />
+            <a
+              href="https://www.nts.go.kr/nts/main.do"
+              target="_blank"
+              rel="noreferrer">
+              <img src={logo1} alt="logo" width="100px" />
+            </a>
           </div>
           <div className="ml-20">
-            <img src={logo2} alt="logo" width="200px" />
+            <a href="https://www.acrc.go.kr/" target="_blank" rel="noreferrer">
+              <img src={logo2} alt="logo" width="200px" />
+            </a>
           </div>
         </div>
       </div>
       <div className="footer-right">
-        <p>대표 | 홍 석 현</p>
+        <p>이사장 | 홍 석 현</p>
         <p>사업자등록번호 | 104 - 82 - 10204</p>
         <p>대표번호 | 02 - 751 - 9898</p>
         <p>이메일 | hwadongcf@naver.com</p>

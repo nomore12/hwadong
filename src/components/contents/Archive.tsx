@@ -57,15 +57,26 @@ const Archive = () => {
         }}>
         세계문화오픈 | WCO
       </p>
+      {/*<p className="activity-item__desc">*/}
+      {/*  ‘더불어 행복한 세상’을 실현하기 위해 문화의 세계화,*/}
+      {/*</p>*/}
+      {/*<p className="activity-item__desc">*/}
+      {/*  미래화에 대비하고 다문화 열린 사회의 문화적 터전 마련에 기여하기 위한*/}
+      {/*</p>*/}
+      {/*<p className="activity-item__desc">*/}
+      {/*  학문적 연구 및 문화 행사를 실천합니다.*/}
+      {/*</p>*/}
       <p className="activity-item__desc">
-        ‘더불어 행복한 세상’을 실현하기 위해 문화의 세계화,
+        ‘더불어 행복한 세상’을 실현하기 위해
       </p>
+      <p className="activity-item__desc">문화의 세계화, 미래화에 대비하고</p>
       <p className="activity-item__desc">
-        미래화에 대비하고 다문화 열린 사회의 문화적 터전 마련에 기여하기 위한
+        다문화 열린 사회의 문화적 터전 마련에 기여하기 위한
       </p>
       <p className="activity-item__desc">
         학문적 연구 및 문화 행사를 실천합니다.
       </p>
+
       {/* ----------------------------------------------------- */}
       <p
         className="activity-item__subject"
@@ -76,12 +87,21 @@ const Archive = () => {
         }}>
         기타 목적 사업
       </p>
+      {/*<p className="activity-item__desc">*/}
+      {/*  주요 사업 이외에도 헤리티지 투모로우, 정자나무 가꾸기,*/}
+      {/*</p>*/}
+      {/*<p className="activity-item__desc">*/}
+      {/*  장학금 및 학술연구, 종교지원단체 등의 다양한 목적 사업을 진행하고*/}
+      {/*  있습니다.*/}
+      {/*</p>*/}
+
+      <p className="activity-item__desc">주요 사업 이외에도</p>
       <p className="activity-item__desc">
-        주요 사업 이외에도 헤리티지 투모로우, 정자나무 가꾸기,
+        헤리티지 투모로우, 정자나무 가꾸기, 장학사업 및 학술연구, 종교지원단체
+        등의
       </p>
       <p className="activity-item__desc">
-        장학금 및 학술연구, 종교지원단체 등의 다양한 목적 사업을 진행하고
-        있습니다.
+        다양한 목적 사업을 진행하고 있습니다.
       </p>
     </ContainerStyle>
   );
