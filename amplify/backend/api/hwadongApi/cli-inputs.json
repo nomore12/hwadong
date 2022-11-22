@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/posts/{id}": {
+      "name": "/posts/{id}",
+      "lambdaFunction": "hwadongLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
