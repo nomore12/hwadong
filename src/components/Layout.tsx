@@ -227,7 +227,7 @@ const Layout = () => {
       <div className="web-logo">
         <img src={logo} alt="logo" width="232px" />
       </div>
-      <div className="mobile-logo">
+      <div className="mobile-logo" onClick={() => navigate('/main')}>
         <img src={logo} alt="logo" width="128px" />
       </div>
       <MobileNavigation />

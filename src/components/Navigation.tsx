@@ -93,6 +93,7 @@ const Navigation = () => {
   const subject = useAppSelector((state) => state.subject.subject);
 
   const onMenuClick = (index: number) => {
+    console.log('menu click');
     switch (index) {
       case 1:
         setMenu1(!menu1);
@@ -120,22 +121,25 @@ const Navigation = () => {
       setMenu1(false);
       setMenu2(false);
       setMenu3(false);
-      return;
+      // return;
+    } else {
+      if (
+        ['설립목적', '연혁', '사업내용', '위치 및 연락처'].includes(subject)
+      ) {
+        setMenu1(true);
+        setMenu2(false);
+        setMenu3(false);
+      } else if (['재단활동소개', '재단활동아카이브'].includes(subject)) {
+        setMenu1(false);
+        setMenu2(true);
+        setMenu3(false);
+      } else if (['공지사항', '연간사업보고', '자료실'].includes(subject)) {
+        setMenu1(false);
+        setMenu2(false);
+        setMenu3(true);
+      }
     }
-    if (['설립목적', '연혁', '사업내용', '위치 및 연락처'].includes(subject)) {
-      setMenu1(true);
-      setMenu2(false);
-      setMenu3(false);
-    } else if (['재단활동소개', '재단활동아카이브'].includes(subject)) {
-      setMenu1(false);
-      setMenu2(true);
-      setMenu3(false);
-    } else if (['공지사항', '연간사업보고', '자료실'].includes(subject)) {
-      setMenu1(false);
-      setMenu2(false);
-      setMenu3(true);
-    }
-  }, [subject, document.documentElement.clientWidth]);
+  }, [subject]);
 
   return (
     <ContainerStyle isMobile={isMobile} className="nav-container">
