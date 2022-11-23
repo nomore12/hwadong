@@ -1,4 +1,32 @@
 {
+  "hwadongapi": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hwadong-hwadongapi-50239-authRole",
+      "UnauthRoleArn": "arn:aws:iam::227180079344:role/amplify-hwadong-hwadongapi-50239-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::227180079344:role/amplify-hwadong-hwadongapi-50239-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-hwadong-hwadongapi-50239-deployment",
+      "UnauthRoleName": "amplify-hwadong-hwadongapi-50239-unauthRole",
+      "StackName": "amplify-hwadong-hwadongapi-50239",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:227180079344:stack/amplify-hwadong-hwadongapi-50239/e373e8d0-6a22-11ed-aabd-02977408b838",
+      "AmplifyAppId": "ddnebpsbywga6"
+    },
+    "categories": {
+      "auth": {
+        "hwadong": {}
+      },
+      "function": {
+        "hwadongLambda": {
+          "deploymentBucketName": "amplify-hwadong-hwadongapi-50239-deployment",
+          "s3Key": "amplify-builds/hwadongLambda-494a746e377842547471-build.zip"
+        }
+      },
+      "api": {
+        "hwadongApi": {},
+        "hwadong": {}
+      }
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-hwadong-dev-133437-authRole",
@@ -9,7 +37,7 @@
       "UnauthRoleName": "amplify-hwadong-dev-133437-unauthRole",
       "StackName": "amplify-hwadong-dev-133437",
       "StackId": "arn:aws:cloudformation:ap-northeast-2:227180079344:stack/amplify-hwadong-dev-133437/f9204c40-6a1e-11ed-898b-06d61cf491ca",
-      "AmplifyAppId": "d3f0igtw5s8rx1"
+      "AmplifyAppId": "ddnebpsbywga6"
     },
     "categories": {
       "function": {
@@ -20,6 +48,9 @@
       },
       "api": {
         "hwadongApi": {}
+      },
+      "auth": {
+        "hwadong408be9e1": {}
       }
     }
   }
