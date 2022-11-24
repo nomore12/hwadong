@@ -7,7 +7,7 @@
 import * as React from "react";
 import { Post } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { GridProps, SelectFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SelectFieldProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -29,7 +29,7 @@ export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivEleme
 export declare type PostUpdateFormOverridesProps = {
     PostUpdateFormGrid?: FormProps<GridProps>;
     title?: FormProps<TextFieldProps>;
-    desc?: FormProps<TextFieldProps>;
+    desc?: FormProps<TextAreaFieldProps>;
     createdAt?: FormProps<TextFieldProps>;
     type?: FormProps<SelectFieldProps>;
 } & EscapeHatchProps;

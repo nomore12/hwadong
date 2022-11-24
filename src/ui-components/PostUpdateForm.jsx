@@ -14,6 +14,7 @@ import {
   Flex,
   Grid,
   SelectField,
+  TextAreaField,
   TextField,
 } from "@aws-amplify/ui-react";
 import { DataStore } from "aws-amplify";
@@ -155,7 +156,7 @@ export default function PostUpdateForm(props) {
         hasError={errors.title?.hasError}
         {...getOverrideProps(overrides, "title")}
       ></TextField>
-      <TextField
+      <TextAreaField
         label="Desc"
         isRequired={false}
         isReadOnly={false}
@@ -181,7 +182,7 @@ export default function PostUpdateForm(props) {
         errorMessage={errors.desc?.errorMessage}
         hasError={errors.desc?.hasError}
         {...getOverrideProps(overrides, "desc")}
-      ></TextField>
+      ></TextAreaField>
       <TextField
         label="Created at"
         isRequired={false}

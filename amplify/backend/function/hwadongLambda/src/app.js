@@ -18,7 +18,6 @@ app.use(awsServerlessExpressMiddleware.eventContext());
 // Enable CORS for all methods
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
-  res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', '*');
   next();
 });
