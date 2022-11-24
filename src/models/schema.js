@@ -31,6 +31,15 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "type": {
+                    "name": "type",
+                    "isArray": false,
+                    "type": {
+                        "enum": "PostType"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "updatedAt": {
                     "name": "updatedAt",
                     "isArray": false,
@@ -66,8 +75,16 @@ export const schema = {
             ]
         }
     },
-    "enums": {},
+    "enums": {
+        "PostType": {
+            "name": "PostType",
+            "values": [
+                "NOTICE",
+                "REPORT"
+            ]
+        }
+    },
     "nonModels": {},
     "codegenVersion": "3.3.2",
-    "version": "34d2a430dc1b3e338703d50308781f9f"
+    "version": "91db89fbaedb03c540a34debae9f5397"
 };

@@ -2,7 +2,10 @@ import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-
 // @ts-ignore
 import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
-
+export enum PostType {
+  NOTICE = "NOTICE",
+  REPORT = "REPORT"
+}
 
 
 
@@ -15,6 +18,7 @@ type EagerPost = {
   readonly title?: string | null;
   readonly desc?: string | null;
   readonly createdAt?: string | null;
+  readonly type?: PostType | keyof typeof PostType | null;
   readonly updatedAt?: string | null;
 }
 
@@ -27,6 +31,7 @@ type LazyPost = {
   readonly title?: string | null;
   readonly desc?: string | null;
   readonly createdAt?: string | null;
+  readonly type?: PostType | keyof typeof PostType | null;
   readonly updatedAt?: string | null;
 }
 

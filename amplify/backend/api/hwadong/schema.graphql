@@ -1,6 +1,13 @@
+enum PostType {
+  NOTICE
+  REPORT
+}
+
 type Post @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String
   desc: String
   createdAt: AWSDate
-} 
+  type: PostType
+}
+ 

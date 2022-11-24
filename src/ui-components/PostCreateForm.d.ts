@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SelectFieldProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -16,18 +16,21 @@ export declare type PostCreateFormInputValues = {
     title?: string;
     desc?: string;
     createdAt?: string;
+    type?: string;
 };
 export declare type PostCreateFormValidationValues = {
     title?: ValidationFunction<string>;
     desc?: ValidationFunction<string>;
     createdAt?: ValidationFunction<string>;
+    type?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type PostCreateFormOverridesProps = {
     PostCreateFormGrid?: FormProps<GridProps>;
     title?: FormProps<TextFieldProps>;
-    desc?: FormProps<TextFieldProps>;
+    desc?: FormProps<TextAreaFieldProps>;
     createdAt?: FormProps<TextFieldProps>;
+    type?: FormProps<SelectFieldProps>;
 } & EscapeHatchProps;
 export declare type PostCreateFormProps = React.PropsWithChildren<{
     overrides?: PostCreateFormOverridesProps | undefined | null;

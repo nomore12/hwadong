@@ -9,7 +9,14 @@ import * as React from "react";
 import { fetchByPath, validateField } from "./utils";
 import { Post } from "../models";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  SelectField,
+  TextAreaField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { DataStore } from "aws-amplify";
 export default function PostCreateForm(props) {
   const {
@@ -27,21 +34,25 @@ export default function PostCreateForm(props) {
     title: undefined,
     desc: undefined,
     createdAt: undefined,
+    type: undefined,
   };
   const [title, setTitle] = React.useState(initialValues.title);
   const [desc, setDesc] = React.useState(initialValues.desc);
   const [createdAt, setCreatedAt] = React.useState(initialValues.createdAt);
+  const [type, setType] = React.useState(initialValues.type);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setTitle(initialValues.title);
     setDesc(initialValues.desc);
     setCreatedAt(initialValues.createdAt);
+    setType(initialValues.type);
     setErrors({});
   };
   const validations = {
     title: [],
     desc: [],
     createdAt: [],
+    type: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -64,6 +75,7 @@ export default function PostCreateForm(props) {
           title,
           desc,
           createdAt,
+          type,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -115,6 +127,7 @@ export default function PostCreateForm(props) {
               title: value,
               desc,
               createdAt,
+              type,
             };
             const result = onChange(modelFields);
             value = result?.title ?? value;
@@ -129,7 +142,7 @@ export default function PostCreateForm(props) {
         hasError={errors.title?.hasError}
         {...getOverrideProps(overrides, "title")}
       ></TextField>
-      <TextField
+      <TextAreaField
         label="Desc"
         isRequired={false}
         isReadOnly={false}
@@ -140,6 +153,7 @@ export default function PostCreateForm(props) {
               title,
               desc: value,
               createdAt,
+              type,
             };
             const result = onChange(modelFields);
             value = result?.desc ?? value;
@@ -153,7 +167,7 @@ export default function PostCreateForm(props) {
         errorMessage={errors.desc?.errorMessage}
         hasError={errors.desc?.hasError}
         {...getOverrideProps(overrides, "desc")}
-      ></TextField>
+      ></TextAreaField>
       <TextField
         label="Created at"
         isRequired={false}
@@ -166,6 +180,7 @@ export default function PostCreateForm(props) {
               title,
               desc,
               createdAt: value,
+              type,
             };
             const result = onChange(modelFields);
             value = result?.createdAt ?? value;
@@ -180,6 +195,44 @@ export default function PostCreateForm(props) {
         hasError={errors.createdAt?.hasError}
         {...getOverrideProps(overrides, "createdAt")}
       ></TextField>
+      <SelectField
+        label="Type"
+        placeholder="Please select an option"
+        isDisabled={false}
+        value={type}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title,
+              desc,
+              createdAt,
+              type: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.type ?? value;
+          }
+          if (errors.type?.hasError) {
+            runValidationTasks("type", value);
+          }
+          setType(value);
+        }}
+        onBlur={() => runValidationTasks("type", type)}
+        errorMessage={errors.type?.errorMessage}
+        hasError={errors.type?.hasError}
+        {...getOverrideProps(overrides, "type")}
+      >
+        <option
+          children="Notice"
+          value="NOTICE"
+          {...getOverrideProps(overrides, "typeoption0")}
+        ></option>
+        <option
+          children="Report"
+          value="REPORT"
+          {...getOverrideProps(overrides, "typeoption1")}
+        ></option>
+      </SelectField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

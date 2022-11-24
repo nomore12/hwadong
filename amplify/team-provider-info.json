@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-hwadong-hwadongapi-50239-unauthRole",
       "StackName": "amplify-hwadong-hwadongapi-50239",
       "StackId": "arn:aws:cloudformation:ap-northeast-2:227180079344:stack/amplify-hwadong-hwadongapi-50239/e373e8d0-6a22-11ed-aabd-02977408b838",
-      "AmplifyAppId": "ddnebpsbywga6"
+      "AmplifyAppId": "ddnebpsbywga6",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-hwadong-hwadongapi-50239-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {

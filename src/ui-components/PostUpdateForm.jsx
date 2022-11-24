@@ -9,7 +9,13 @@ import * as React from "react";
 import { fetchByPath, validateField } from "./utils";
 import { Post } from "../models";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import {
+  Button,
+  Flex,
+  Grid,
+  SelectField,
+  TextField,
+} from "@aws-amplify/ui-react";
 import { DataStore } from "aws-amplify";
 export default function PostUpdateForm(props) {
   const {
@@ -28,16 +34,19 @@ export default function PostUpdateForm(props) {
     title: undefined,
     desc: undefined,
     createdAt: undefined,
+    type: undefined,
   };
   const [title, setTitle] = React.useState(initialValues.title);
   const [desc, setDesc] = React.useState(initialValues.desc);
   const [createdAt, setCreatedAt] = React.useState(initialValues.createdAt);
+  const [type, setType] = React.useState(initialValues.type);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = { ...initialValues, ...postRecord };
     setTitle(cleanValues.title);
     setDesc(cleanValues.desc);
     setCreatedAt(cleanValues.createdAt);
+    setType(cleanValues.type);
     setErrors({});
   };
   const [postRecord, setPostRecord] = React.useState(post);
@@ -53,6 +62,7 @@ export default function PostUpdateForm(props) {
     title: [],
     desc: [],
     createdAt: [],
+    type: [],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -75,6 +85,7 @@ export default function PostUpdateForm(props) {
           title,
           desc,
           createdAt,
+          type,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -129,6 +140,7 @@ export default function PostUpdateForm(props) {
               title: value,
               desc,
               createdAt,
+              type,
             };
             const result = onChange(modelFields);
             value = result?.title ?? value;
@@ -155,6 +167,7 @@ export default function PostUpdateForm(props) {
               title,
               desc: value,
               createdAt,
+              type,
             };
             const result = onChange(modelFields);
             value = result?.desc ?? value;
@@ -182,6 +195,7 @@ export default function PostUpdateForm(props) {
               title,
               desc,
               createdAt: value,
+              type,
             };
             const result = onChange(modelFields);
             value = result?.createdAt ?? value;
@@ -196,6 +210,44 @@ export default function PostUpdateForm(props) {
         hasError={errors.createdAt?.hasError}
         {...getOverrideProps(overrides, "createdAt")}
       ></TextField>
+      <SelectField
+        label="Type"
+        placeholder="Please select an option"
+        isDisabled={false}
+        value={type}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title,
+              desc,
+              createdAt,
+              type: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.type ?? value;
+          }
+          if (errors.type?.hasError) {
+            runValidationTasks("type", value);
+          }
+          setType(value);
+        }}
+        onBlur={() => runValidationTasks("type", type)}
+        errorMessage={errors.type?.errorMessage}
+        hasError={errors.type?.hasError}
+        {...getOverrideProps(overrides, "type")}
+      >
+        <option
+          children="Notice"
+          value="NOTICE"
+          {...getOverrideProps(overrides, "typeoption0")}
+        ></option>
+        <option
+          children="Report"
+          value="REPORT"
+          {...getOverrideProps(overrides, "typeoption1")}
+        ></option>
+      </SelectField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
